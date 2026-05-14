@@ -640,133 +640,45 @@ function BrandInStorySVG() {
 
 function FitnessOfferSVG() {
   return (
-    <svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" style={{ width:"100%", height:"auto", display:"block", borderRadius:18, border:"1px solid rgba(255,255,255,.08)", overflow:"hidden" }}>
-      <defs>
-        <linearGradient id="foBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#241108"/><stop offset=".5" stopColor="#111510"/><stop offset="1" stopColor="#050505"/></linearGradient>
-        <linearGradient id="foPhone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fed7aa"/><stop offset=".45" stopColor="#fff4df"/><stop offset="1" stopColor="#0a0e0b"/></linearGradient>
-        <filter id="foBlur"><feGaussianBlur stdDeviation="24"/></filter>
-      </defs>
-      <rect width="560" height="420" fill="url(#foBg)"/>
-      <ellipse cx="145" cy="158" rx="150" ry="150" fill="rgba(249,115,22,.24)" filter="url(#foBlur)"/>
-      <ellipse cx="440" cy="270" rx="138" ry="138" fill="rgba(52,211,153,.12)" filter="url(#foBlur)"/>
-      <text x="22" y="26" fill="rgba(255,244,223,.34)" fontFamily="Space Mono" fontSize="8" letterSpacing="3">FITNESS SERIES SYSTEM</text>
-      <rect x="28" y="48" width="184" height="324" rx="24" fill="rgba(0,0,0,.54)" stroke="rgba(253,186,116,.28)" strokeWidth="1.5"/>
-      <rect x="39" y="61" width="162" height="298" rx="19" fill="url(#foPhone)" opacity=".94"/>
-      <circle cx="120" cy="146" r="48" fill="rgba(0,0,0,.48)"/>
-      <circle cx="120" cy="128" r="22" fill="rgba(0,0,0,.72)"/>
-      <ellipse cx="120" cy="170" rx="27" ry="19" fill="rgba(0,0,0,.55)"/>
-      <text x="120" y="232" fill="#fff4df" fontFamily="Bebas Neue" fontSize="20" textAnchor="middle" letterSpacing="2">COMEBACK</text>
-      <text x="120" y="253" fill="#fde68a" fontFamily="Bebas Neue" fontSize="20" textAnchor="middle" letterSpacing="2">ARC</text>
-      <rect x="61" y="286" width="118" height="7" rx="3.5" fill="rgba(255,255,255,.28)"/>
-      <rect x="61" y="312" width="118" height="30" rx="15" fill="rgba(249,115,22,.18)" stroke="rgba(249,115,22,.38)"/>
-      <text x="120" y="331" fill="#fde68a" fontFamily="Space Mono" fontSize="7.5" textAnchor="middle" letterSpacing="1">EPISODE 01 ▶</text>
-      <rect x="236" y="48" width="292" height="98" rx="16" fill="rgba(0,0,0,.48)" stroke="rgba(255,255,255,.08)"/>
-      <text x="254" y="72" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="7.5" letterSpacing="2">PRODUCT INTEGRATION</text>
-      {[["SUPPLEMENT","Protocol"],["APPAREL","Identity"],["APP","Progress"]].map(([a,b],i)=>(<g key={a}><rect x={254+i*88} y="88" width="78" height="36" rx="10" fill={i===0?"rgba(249,115,22,.18)":"rgba(255,255,255,.05)"} stroke={i===0?"rgba(249,115,22,.32)":"rgba(255,255,255,.08)"}/><text x={293+i*88} y="103" fill={i===0?"#fde68a":"rgba(255,244,223,.55)"} fontFamily="Space Mono" fontSize="6.3" textAnchor="middle">{a}</text><text x={293+i*88} y="115" fill="rgba(255,244,223,.34)" fontFamily="Space Mono" fontSize="5.8" textAnchor="middle">{b}</text></g>))}
-      <rect x="236" y="164" width="292" height="100" rx="16" fill="rgba(0,0,0,.48)" stroke="rgba(255,255,255,.08)"/>
-      <text x="254" y="188" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="7.5" letterSpacing="2">SERIES STRUCTURE</text>
-      {[["Wk 1","Start"],["Wk 3","Protocol"],["Wk 5","Breakthrough"],["Wk 8","Finish"]].map(([a,b],i)=>(<g key={a}><rect x={254+i*64} y="204" width="54" height="40" rx="10" fill={i===2?"rgba(249,115,22,.18)":"rgba(255,255,255,.05)"} stroke={i===2?"rgba(249,115,22,.32)":"rgba(255,255,255,.08)"}/><text x={281+i*64} y="220" fill={i===2?"#fde68a":"rgba(255,244,223,.56)"} fontFamily="Space Mono" fontSize="6.5" textAnchor="middle">{a}</text><text x={281+i*64} y="233" fill="rgba(255,244,223,.34)" fontFamily="Space Mono" fontSize="5.8" textAnchor="middle">{b}</text></g>))}
-      <rect x="236" y="282" width="292" height="90" rx="16" fill="rgba(0,0,0,.48)" stroke="rgba(255,255,255,.08)"/>
-      <text x="254" y="306" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="7.5" letterSpacing="2">REUSABLE OUTPUTS</text>
-      {[["VERTICAL SERIES","09:16"],["HERO CUT","03:10"],["PAID SOCIAL","00:30"]].map(([a,b],i)=>(<g key={a}><rect x={254+i*86} y="322" width="76" height="30" rx="9" fill={i===0?"rgba(249,115,22,.16)":"rgba(255,255,255,.045)"} stroke={i===0?"rgba(249,115,22,.28)":"rgba(255,255,255,.08)"}/><text x={292+i*86} y="335" fill={i===0?"#fde68a":"rgba(255,244,223,.56)"} fontFamily="Space Mono" fontSize="6.2" textAnchor="middle">{a}</text><text x={292+i*86} y="346" fill="rgba(253,186,116,.65)" fontFamily="Space Mono" fontSize="5.8" textAnchor="middle">{b}</text></g>))}
-      <rect x="28" y="388" width="500" height="14" rx="7" fill="rgba(0,0,0,.5)" stroke="rgba(255,255,255,.06)"/>
-      <text x="278" y="398" fill="rgba(255,244,223,.42)" fontFamily="Space Mono" fontSize="6.7" textAnchor="middle" letterSpacing="2">STORY-FIRST · AUDIENCE-NATIVE · BUILT TO SCALE</text>
-    </svg>
+    <div className="animated-panel" style={{position:"relative",width:"100%",borderRadius:18,border:"1px solid rgba(255,255,255,.08)",overflow:"hidden",background:"#060505"}}>
+      <img
+        src="https://i.ibb.co/WNdzwstX/Chat-GPT-Image-May-14-2026-07-02-03-PM.png"
+        alt="Fitness series system visual"
+        style={{width:"100%",height:"auto",display:"block",objectFit:"cover",objectPosition:"center",filter:"saturate(1.04) contrast(1.04)"}}
+      />
+    </div>
   );
 }
 
 function EntHeroSVG() {
   return (
-    <svg viewBox="0 0 440 530" xmlns="http://www.w3.org/2000/svg" style={{ width:"100%", height:"auto", display:"block", borderRadius:20, border:"1px solid rgba(255,255,255,.11)", boxShadow:"0 0 70px rgba(249,115,22,.18)" }}>
-      <defs><linearGradient id="ehBg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#2d1015"/><stop offset=".5" stopColor="#1b1230"/><stop offset="1" stopColor="#040208"/></linearGradient><linearGradient id="ehPh2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fed7aa"/><stop offset="1" stopColor="#1a0810"/></linearGradient><filter id="gEH2"><feGaussianBlur stdDeviation="22"/></filter><clipPath id="ehC2"><rect width="440" height="530" rx="20"/></clipPath></defs>
-      <g clipPath="url(#ehC2)">
-        <rect width="440" height="530" fill="url(#ehBg2)"/>
-        <circle cx="138" cy="168" r="132" fill="rgba(249,115,22,.27)" filter="url(#gEH2)"/>
-        <circle cx="316" cy="348" r="112" fill="rgba(124,58,237,.22)" filter="url(#gEH2)"/>
-        <rect x="20" y="20" width="400" height="40" rx="11" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.08)" strokeWidth="1"/>
-        <text x="38" y="45" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="8.5" letterSpacing="2">VERTICAL IP SLATE</text>
-        <circle cx="382" cy="40" r="4" fill="#ef4444"><animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></circle>
-        <rect x="36" y="78" width="146" height="232" rx="20" fill="url(#ehPh2)" stroke="rgba(253,186,116,.3)" strokeWidth="1.5"/>
-        <rect x="44" y="88" width="130" height="212" rx="16" fill="rgba(0,0,0,.3)"/>
-        <ellipse cx="109" cy="182" rx="46" ry="46" fill="rgba(249,115,22,.16)" filter="url(#gEH2)"/>
-        <text x="109" y="160" fill="#fff4df" fontFamily="Bebas Neue" fontSize="22" textAnchor="middle" letterSpacing="3">MICRO</text>
-        <text x="109" y="185" fill="#fde68a" fontFamily="Bebas Neue" fontSize="22" textAnchor="middle" letterSpacing="3">DRAMA</text>
-        <rect x="56" y="248" width="108" height="6" rx="3" fill="rgba(255,255,255,.26)"/>
-        <rect x="54" y="270" width="112" height="28" rx="14" fill="rgba(249,115,22,.2)" stroke="rgba(249,115,22,.4)" strokeWidth="1"/>
-        <text x="110" y="288" fill="#fde68a" fontFamily="Space Mono" fontSize="7.5" textAnchor="middle">EPISODE 01 ▶</text>
-        {[0,1,2].map(i=>(<g key={i}><rect x="228" y={78+i*88} width="108" height="72" rx="13" fill={["rgba(255,255,255,.06)","rgba(249,115,22,.12)","rgba(124,58,237,.1)"][i]} stroke="rgba(255,255,255,.09)" strokeWidth="1"/>{i===1&&<><text x="282" y="122" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="7" textAnchor="middle" letterSpacing="1">FEATURED</text><rect x="252" y="130" width="60" height="3" rx="1.5" fill="rgba(249,115,22,.45)"/></>}</g>))}
-        <rect x="36" y="338" width="368" height="95" rx="16" fill="rgba(0,0,0,.6)" stroke="rgba(255,255,255,.07)" strokeWidth="1"/>
-        <rect x="36" y="338" width="368" height="1" fill="rgba(249,115,22,.18)"/>
-        <text x="56" y="362" fill="rgba(253,186,116,.68)" fontFamily="Space Mono" fontSize="8.5" letterSpacing="2">AI PIPELINE</text>
-        {["Pre-prod","Visual Dev","Post Accel","Distrib"].map((s,i)=>(<g key={s}><rect x={56+i*88} y="374" width="78" height="44" rx="9" fill={i===1?"rgba(249,115,22,.18)":"rgba(255,255,255,.05)"} stroke={i===1?"rgba(249,115,22,.35)":"rgba(255,255,255,.07)"} strokeWidth="1"/><text x={95+i*88} y="400" fill={i===1?"#fde68a":"rgba(255,244,223,.4)"} fontFamily="Space Mono" fontSize="7" textAnchor="middle">{s}</text></g>))}
-        <circle cx="386" cy="448" r="50" fill="none" stroke="rgba(249,115,22,.18)" strokeWidth="1.5"/>
-        <text x="386" y="454" fill="rgba(253,186,116,.78)" fontFamily="Bebas Neue" fontSize="17" textAnchor="middle" letterSpacing="2">AI</text>
-      </g>
-    </svg>
+    <img
+      src="https://i.ibb.co/ymNBjNJc/Chat-GPT-Image-May-14-2026-06-13-06-PM.png"
+      alt="Entertainment hero"
+      style={{width:"100%",height:"auto",display:"block",borderRadius:20,border:"1px solid rgba(255,255,255,.11)",boxShadow:"0 0 70px rgba(249,115,22,.18)"}}
+    />
   );
 }
 
 function FitHeroSVG() {
   return (
-    <svg viewBox="0 0 440 530" xmlns="http://www.w3.org/2000/svg" style={{ width:"100%", height:"auto", display:"block", borderRadius:20, border:"1px solid rgba(255,255,255,.11)", boxShadow:"0 0 70px rgba(249,115,22,.18)" }}>
-      <defs><linearGradient id="fhBg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#35170d"/><stop offset=".5" stopColor="#151515"/><stop offset="1" stopColor="#040506"/></linearGradient><linearGradient id="fhPh2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fed7aa"/><stop offset=".4" stopColor="#fff"/><stop offset="1" stopColor="#0a0e0b"/></linearGradient><filter id="gFH2"><feGaussianBlur stdDeviation="22"/></filter><clipPath id="fhC2"><rect width="440" height="530" rx="20"/></clipPath></defs>
-      <g clipPath="url(#fhC2)">
-        <rect width="440" height="530" fill="url(#fhBg2)"/>
-        <circle cx="148" cy="188" r="140" fill="rgba(249,115,22,.28)" filter="url(#gFH2)"/>
-        <rect x="20" y="20" width="400" height="40" rx="11" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.08)" strokeWidth="1"/>
-        <text x="38" y="45" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="8.5" letterSpacing="2">CREATOR-LED FITNESS</text>
-        <rect x="48" y="78" width="150" height="280" rx="23" fill="url(#fhPh2)" opacity=".9" stroke="rgba(253,186,116,.32)" strokeWidth="1.5"/>
-        <rect x="56" y="88" width="134" height="260" rx="19" fill="rgba(0,0,0,.31)"/>
-        <circle cx="123" cy="184" r="44" fill="rgba(0,0,0,.5)"/><circle cx="123" cy="168" r="20" fill="rgba(0,0,0,.7)"/>
-        <ellipse cx="123" cy="208" rx="24" ry="18" fill="rgba(0,0,0,.5)"/>
-        <rect x="68" y="276" width="110" height="6" rx="3" fill="rgba(255,255,255,.28)"/>
-        <rect x="64" y="294" width="118" height="30" rx="15" fill="rgba(249,115,22,.2)" stroke="rgba(249,115,22,.36)" strokeWidth="1"/>
-        <text x="123" y="313" fill="#fde68a" fontFamily="Space Mono" fontSize="7.5" textAnchor="middle" letterSpacing="1">PROTOCOL →</text>
-        {[0,1,2].map(i=>(<g key={i}><rect x="252" y={88+i*94} width="152" height="78" rx="13" fill={["rgba(255,255,255,.06)","rgba(249,115,22,.14)","rgba(52,211,153,.08)"][i]} stroke={["rgba(255,255,255,.09)","rgba(249,115,22,.28)","rgba(52,211,153,.18)"][i]} strokeWidth="1"/>{i===1&&<><text x="328" y="132" fill="#fde68a" fontFamily="Bebas Neue" fontSize="18" textAnchor="middle" letterSpacing="2">COMEBACK</text><text x="328" y="152" fill="rgba(253,186,116,.6)" fontFamily="Space Mono" fontSize="6.5" textAnchor="middle">ARC ACTIVE</text></>}</g>))}
-        <rect x="48" y="390" width="368" height="90" rx="16" fill="rgba(0,0,0,.58)" stroke="rgba(255,255,255,.07)" strokeWidth="1"/>
-        <rect x="48" y="390" width="368" height="1" fill="rgba(249,115,22,.18)"/>
-        <text x="68" y="414" fill="rgba(253,186,116,.68)" fontFamily="Space Mono" fontSize="8.5" letterSpacing="2">TRAINING ARC</text>
-        {["Wk 1","Wk 3","Wk 5","Wk 8"].map((wk,i)=>(<g key={wk}><rect x={68+i*86} y="426" width="76" height="40" rx="9" fill={i===2?"rgba(249,115,22,.2)":"rgba(255,255,255,.05)"} stroke={i===2?"rgba(249,115,22,.4)":"rgba(255,255,255,.07)"} strokeWidth="1"/>{i===2&&<rect x={68+i*86} y="426" width="76" height="2" rx="1" fill="rgba(249,115,22,.55)"/>}<text x={106+i*86} y="451" fill={i===2?"#fde68a":"rgba(255,244,223,.38)"} fontFamily="Space Mono" fontSize="7.5" textAnchor="middle">{wk}</text></g>))}
-      </g>
-    </svg>
+    <img
+      src="https://i.ibb.co/RprVQ1ww/Chat-GPT-Image-May-14-2026-06-49-30-PM.png"
+      alt="Fitness hero"
+      style={{width:"100%",height:"auto",display:"block",borderRadius:20,border:"1px solid rgba(255,255,255,.11)",boxShadow:"0 0 70px rgba(249,115,22,.18)"}}
+    />
   );
 }
 
 function GenreGridSVG() {
   return (
-    <svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" style={{ width:"100%", height:"auto", display:"block", borderRadius:18, border:"1px solid rgba(255,255,255,.08)", overflow:"hidden" }}>
-      <defs>
-        <linearGradient id="ggBgNew" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#230d16"/><stop offset=".5" stopColor="#171027"/><stop offset="1" stopColor="#060505"/></linearGradient>
-        <linearGradient id="ggPhone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fed7aa"/><stop offset="1" stopColor="#16090d"/></linearGradient>
-        <filter id="ggBlurNew"><feGaussianBlur stdDeviation="22"/></filter>
-      </defs>
-      <rect width="560" height="420" fill="url(#ggBgNew)"/>
-      <ellipse cx="132" cy="144" rx="150" ry="150" fill="rgba(249,115,22,.2)" filter="url(#ggBlurNew)"/>
-      <ellipse cx="438" cy="278" rx="150" ry="150" fill="rgba(124,58,237,.2)" filter="url(#ggBlurNew)"/>
-      <text x="22" y="26" fill="rgba(255,244,223,.34)" fontFamily="Space Mono" fontSize="8" letterSpacing="3">VERTICAL CONTENT PIPELINE</text>
-      <rect x="28" y="52" width="178" height="302" rx="22" fill="rgba(0,0,0,.52)" stroke="rgba(253,186,116,.24)" strokeWidth="1.5"/>
-      <rect x="38" y="64" width="158" height="278" rx="18" fill="url(#ggPhone)" opacity=".94"/>
-      <circle cx="117" cy="142" r="48" fill="rgba(0,0,0,.46)"/>
-      <text x="117" y="136" fill="#fff4df" fontFamily="Bebas Neue" fontSize="23" textAnchor="middle" letterSpacing="3">MICRO</text>
-      <text x="117" y="161" fill="#fde68a" fontFamily="Bebas Neue" fontSize="23" textAnchor="middle" letterSpacing="3">DRAMA</text>
-      <rect x="54" y="250" width="126" height="7" rx="3.5" fill="rgba(255,255,255,.24)"/>
-      <rect x="54" y="275" width="126" height="32" rx="16" fill="rgba(249,115,22,.18)" stroke="rgba(249,115,22,.38)"/>
-      <text x="117" y="295" fill="#fde68a" fontFamily="Space Mono" fontSize="7.5" textAnchor="middle" letterSpacing="1">EPISODE 01 ▶</text>
-      <rect x="236" y="52" width="292" height="104" rx="16" fill="rgba(0,0,0,.48)" stroke="rgba(255,255,255,.08)"/>
-      <text x="254" y="76" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="7.5" letterSpacing="2">EPISODE QUEUE</text>
-      {["EP01","EP02","EP03","EP04"].map((ep,i)=>(<g key={ep}><rect x={254+i*62} y="94" width="52" height="38" rx="9" fill={i<2?"rgba(249,115,22,.18)":"rgba(255,255,255,.05)"} stroke={i<2?"rgba(249,115,22,.34)":"rgba(255,255,255,.08)"}/><text x={280+i*62} y="118" fill={i<2?"#fde68a":"rgba(255,244,223,.45)"} fontFamily="Space Mono" fontSize="7" textAnchor="middle">{ep}</text></g>))}
-      <rect x="236" y="174" width="292" height="96" rx="16" fill="rgba(0,0,0,.48)" stroke="rgba(255,255,255,.08)"/>
-      <text x="254" y="198" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="7.5" letterSpacing="2">GENRE SLATE</text>
-      {[["THRILLER","⚡"],["REVENGE","🔥"],["SCI-FI","▣"],["FANTASY","✦"]].map(([name,icon],i)=>(<g key={name}><rect x={254+(i%2)*126} y={214+Math.floor(i/2)*28} width="112" height="22" rx="8" fill={i===0?"rgba(249,115,22,.14)":"rgba(255,255,255,.045)"} stroke={i===0?"rgba(249,115,22,.28)":"rgba(255,255,255,.08)"}/><text x={266+(i%2)*126} y={229+Math.floor(i/2)*28} fill={i===0?"#fde68a":"rgba(255,244,223,.56)"} fontFamily="Space Mono" fontSize="6.8">{icon} {name}</text></g>))}
-      <rect x="236" y="288" width="292" height="66" rx="16" fill="rgba(0,0,0,.48)" stroke="rgba(255,255,255,.08)"/>
-      <text x="254" y="312" fill="rgba(253,186,116,.72)" fontFamily="Space Mono" fontSize="7.5" letterSpacing="2">DELIVERY SPEED</text>
-      <rect x="254" y="326" width="214" height="5" rx="2.5" fill="rgba(255,255,255,.08)"/>
-      <rect x="254" y="326" width="164" height="5" rx="2.5" fill="rgba(249,115,22,.48)"/>
-      <circle cx="418" cy="328.5" r="7" fill="#f97316"/>
-      <text x="486" y="331" fill="#fde68a" fontFamily="Bebas Neue" fontSize="18" textAnchor="middle" letterSpacing="2">4–8 WKS</text>
-      <rect x="28" y="372" width="500" height="26" rx="13" fill="rgba(0,0,0,.52)" stroke="rgba(255,255,255,.07)"/>
-      <text x="278" y="389" fill="rgba(255,244,223,.5)" fontFamily="Space Mono" fontSize="7.5" textAnchor="middle" letterSpacing="2">LICENSING · COMMISSIONING · CO-PRODUCTION</text>
-    </svg>
+    <div className="animated-panel" style={{position:"relative",width:"100%",borderRadius:18,border:"1px solid rgba(255,255,255,.08)",overflow:"hidden",background:"#060505"}}>
+      <img
+        src="https://i.ibb.co/ynPCcdCv/Chat-GPT-Image-May-14-2026-06-22-21-PM.png"
+        alt="Vertical content pipeline visual"
+        style={{width:"100%",height:"auto",display:"block",objectFit:"cover",objectPosition:"center",filter:"saturate(1.04) contrast(1.04)"}}
+      />
+    </div>
   );
 }
 
@@ -1278,7 +1190,7 @@ function FitnessPage() {
             <div style={{display:"grid",gap:14}}>{FIT_WHY.slice(0,2).map(([b,c])=>(<div key={b} className="card" style={{background:"rgba(0,0,0,.28)"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.5)"}}>{c}</p></div>))}</div>
             <div style={{display:"grid",gap:14}}>{FIT_WHY.slice(2).map(([b,c])=>(<div key={b} className="card" style={{background:"rgba(0,0,0,.28)"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.5)"}}>{c}</p></div>))}</div>
           </div>
-          <div style={{marginTop:20}}><CreatorNetworkSVG/></div>
+          
         </Rv>
 
         <HR/>
