@@ -744,7 +744,7 @@ function Header({page,setPage}) {
           <div style={{position:"relative"}}>
             <button className="nbtn" onClick={()=>setDrop(d=>!d)}>Industries <span style={{color:"var(--amber)"}}>⌄</span></button>
             {drop&&(<div style={{position:"absolute",left:"50%",transform:"translateX(-50%)",top:"calc(100% + 8px)",width:248,background:"rgba(8,6,6,.97)",border:"1px solid rgba(255,255,255,.08)",borderRadius:14,padding:8,backdropFilter:"blur(18px)",zIndex:300,boxShadow:"0 28px 65px rgba(0,0,0,.5)"}}>
-              <button onClick={()=>go("home","who-we-work-with")} style={{display:"block",width:"100%",background:"none",border:"none",borderRadius:9,padding:"9px 14px",textAlign:"left",color:"rgba(255,244,223,.62)",fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".17em",textTransform:"uppercase",transition:"all .14s",cursor:"pointer"}}
+              <button onClick={()=>go("travel")} style={{display:"block",width:"100%",background:"none",border:"none",borderRadius:9,padding:"9px 14px",textAlign:"left",color:"rgba(255,244,223,.62)",fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".17em",textTransform:"uppercase",transition:"all .14s",cursor:"pointer"}}
                 onMouseEnter={e=>{e.currentTarget.style.background="rgba(249,115,22,.1)";e.currentTarget.style.color="var(--amber-l)";}}
                 onMouseLeave={e=>{e.currentTarget.style.background="none";e.currentTarget.style.color="rgba(255,244,223,.62)";}}>
                 Travel
@@ -963,6 +963,140 @@ function HomePage() {
               <RegForm/>
               <p style={{marginTop:18,fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".18em",textTransform:"uppercase",color:"rgba(255,255,255,.65)"}}>We review every submission. Limited availability per quarter.</p>
             </div>
+          </div>
+        </Rv>
+      </div>
+    </>
+  );
+}
+
+/* ── TRAVEL PAGE ── */
+const TRAVEL_OFFERS=[
+  {title:"Vertical Content Series for Brands",copy:"Short-form, social-first branded series — built to live on the platforms where your audience already spends time. Each series is built around your brand as a core story device, developed with AI-assisted production, and designed with cinematic trailers that hook from the first second.",bullets:["Multi-episode format that builds repeat touchpoints — not one-and-done exposure","Brand integration written into the DNA of the story — not added after the fact","Scalable: start with a pilot series, expand what works"]},
+  {title:"Creator-Led Mini-Movies",copy:"3–10 minute branded entertainment films, built around real influencers and their existing audiences. Your brand becomes the engine of the plot. The creator uploads to their channel. You walk away with a hero content asset you own and can reuse.",bullets:["Native to the creator's audience — feels like their content, not your ad","Full brand usage rights for paid, owned, and social channels","Story templates built for travel, VPN, insurance, fintech, and destination brands — ready to pitch fast"]}
+];
+const TRAVEL_AUDIENCE=["Travel brands that already invest in influencer marketing and want the content to work harder","VPNs, travel insurance providers, and eSIM brands looking for story-first sponsor integrations","OTAs, booking platforms, and travel apps that want hero content — not just ad inventory","Tourism boards and destination marketing organisations ready to think like a media brand","Travel fintech and loyalty programs with a content budget and something worth saying","Any brand that works with travel creators and is tired of paying for reads that get skipped"];
+const TRAVEL_WHY=[
+  ["We make your brand the plot.","Not the pause before the content. Not the logo at the end. The reason the story exists."],
+  ["AI-assisted production means speed without sacrificing quality.","Cinematic output, faster timelines, built for social-first formats from the ground up."],
+  ["We work with real influencers with real audiences.","Distribution isn't theoretical — it's baked into the product."],
+  ["You leave with an asset, not an impression.","Every project delivers content you can reuse, repurpose, and run across your own channels long after the creator upload."]
+];
+const TRAVEL_FAQ=[
+  ["How is this different from a standard influencer sponsorship?","A standard sponsorship puts your brand in front of an audience for 30–60 seconds. What we build puts your brand inside the story — as the thing that drives it forward. The difference in recall, engagement, and reusability is significant."],
+  ["How long does production take?","Timelines vary by format. A vertical content series pilot can move from brief to delivery in 4–8 weeks. Creator mini-movies typically run 6–10 weeks depending on scope, location, and creator availability."],
+  ["Do we need to bring our own influencer?","No. We work with our existing creator network and match you to the right partner based on your brand, audience, and objectives. If you already have a creator relationship, we can work with them too."],
+  ["What does brand integration actually look like?","Your product or service is written into the story as a functional plot device — the thing the character needs, uses, or is saved by. It's not a verbal mention. It's not a card held up to camera. It's story architecture."],
+  ["What markets do you operate in?","We are travel-first, with production capability across Southeast Asia and beyond. We work with brands targeting global, regional, and destination-specific audiences."],
+  ["How is the content distributed?","Creator mini-movies are uploaded directly to the creator's channel — giving you immediate access to their existing audience. Vertical content series are distributed across social platforms and can be amplified through paid media. You also receive full usage rights to deploy across your own owned channels."],
+  ["What happens after I register interest?","We review every submission. If there's a fit, we'll reach out to schedule a short discovery call — no pitch decks, no pressure. We want to understand your brand, your objectives, and what you're trying to achieve. From there we'll show you exactly what a project could look like for you."],
+  ["How many brand partners do you take on?","We work with a limited number of partners each quarter to protect the quality of every project. Registering interest early puts you at the front of the queue."]
+];
+
+function TravelPage() {
+  useReveal();
+  return (
+    <>
+      <div style={{position:"relative",overflow:"hidden",background:"linear-gradient(135deg,#10211b 0%,#101719 48%,#050404 100%)",minHeight:520,display:"flex",alignItems:"center"}}>
+        <div className="hero-grid" style={{opacity:.42}}/>
+        <div style={{position:"absolute",left:"6%",top:"16%",width:300,height:300,borderRadius:"50%",background:"rgba(52,211,153,.12)",filter:"blur(78px)",animation:"drift1 14s ease-in-out infinite",pointerEvents:"none"}}/>
+        <div style={{position:"absolute",right:"8%",bottom:"16%",width:260,height:260,borderRadius:"50%",background:"rgba(249,115,22,.16)",filter:"blur(72px)",animation:"drift2 15s ease-in-out infinite",pointerEvents:"none"}}/>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,height:110,background:"linear-gradient(to bottom,transparent,var(--bg))",pointerEvents:"none",zIndex:2}}/>
+        <div style={{position:"relative",zIndex:5,maxWidth:1280,margin:"0 auto",padding:"110px 24px 72px",width:"100%",display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"center"}}>
+          <div>
+            <div style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"6px 14px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(253,186,116,.72)",background:"rgba(0,0,0,.38)",backdropFilter:"blur(10px)",marginBottom:22}}><span style={{color:"var(--amber)",fontSize:7}}>▶</span> Bangzuu Studios × Travel Industry</div>
+            <h1 className="ttl" style={{fontSize:"clamp(32px,5vw,66px)",color:"#fff4df",marginBottom:20}}>Stop Buying Sponsor Reads. Start Owning the Story.</h1>
+            <p style={{fontSize:16,fontWeight:700,lineHeight:1.82,color:"rgba(253,186,116,.86)",marginBottom:20}}>We build vertical content series and creator-led mini-movies that embed your brand directly into the plot — using AI-assisted production and real influencer partnerships.</p>
+            {["Your product becomes the engine of the story — not a 30-second interruption before it starts","Cinematic short-form content built natively for the platforms your audience lives on","Real creators. Existing audiences. Distribution that's built in — not bolted on","Faster production than traditional branded content. Higher recall than anything your media buyer has run this year"].map(b=><div key={b} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:13,padding:"11px 16px",fontSize:13.5,lineHeight:1.72,color:"rgba(255,244,223,.6)",marginBottom:9}}>{b}</div>)}
+            <p style={{margin:"16px 0",fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".2em",textTransform:"uppercase",color:"var(--amber)"}}>We work with a limited number of brand partners per quarter.</p>
+            <a href="#travel-register" className="btn">Register Interest</a>
+          </div>
+          <TiltCard style={{border:"none",boxShadow:"none"}}><TravelSVG/></TiltCard>
+        </div>
+      </div>
+
+      <div style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
+        <HR/>
+        <Rv>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"start"}}>
+            <BigT c="Audiences have learned to skip your brand before you've finished saying it." sz={50}/>
+            <div>
+              <p style={{fontSize:15,lineHeight:1.88,color:"rgba(255,244,223,.6)",marginBottom:18}}>Mid-roll reads get muted. Sponsored segments get scrolled past. The creator delivers the line, the audience checks out, and you've paid for an impression that landed nowhere.</p>
+              <p style={{fontSize:15,lineHeight:1.88,color:"rgba(255,244,223,.6)"}}>The format is broken. And running more of it won't fix it.</p>
+            </div>
+          </div>
+        </Rv>
+
+        <HR/>
+        <Rv>
+          <Lbl c="Imagine this"/>
+          <BigT c="Your brand inside the story."/>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14,marginTop:28}}>
+            {[
+              ["VPN Brand","Your VPN brand as the only thing standing between the protagonist and a government surveillance dragnet — cutting across three countries, two border crossings, and one very bad decision. Your product isn't mentioned in a mid-roll. It's the reason the main character survives."],
+              ["Travel Insurance","Your travel insurance brand as the emotional turning point of a 7-minute mini-movie — a trip that goes catastrophically wrong, a traveller completely alone, and the moment your brand turns disaster into survival."],
+              ["Tourism Board","A destination universe — a self-contained cinematic story set entirely in your city, built to expand, seeded through a creator with the exact audience you want, and designed to be content people send to friends before they book a flight."]
+            ].map(([title,copy])=><div key={title} className="card" style={{background:"rgba(0,0,0,.28)",minHeight:250}}><h3 className="ttl" style={{fontSize:24,color:"#fff4df",marginBottom:12}}>{title}</h3><p style={{fontSize:13.5,lineHeight:1.82,color:"rgba(255,244,223,.52)"}}>{copy}</p></div>)}
+          </div>
+        </Rv>
+
+        <HR/>
+        <Rv>
+          <Lbl c="What We Do"/><BigT c="What We Do"/>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:22,marginTop:28}}>
+            {TRAVEL_OFFERS.map((o,i)=><div key={o.title} className="card" style={{padding:0,overflow:"hidden"}}>
+              <div style={{position:"relative",aspectRatio:"16 / 9",overflow:"hidden",background:"#060505",borderBottom:"1px solid rgba(255,255,255,.07)",flexShrink:0}}>
+                {i===0 ? (
+                  <div style={{position:"relative",width:"100%",height:"100%",background:"linear-gradient(135deg,#10211b,#060505)",display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:14,overflow:"hidden"}}>
+                    <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 20% 22%,rgba(249,115,22,.18),transparent 34%),radial-gradient(circle at 82% 72%,rgba(52,211,153,.14),transparent 36%)",pointerEvents:"none"}}/>
+                    {[["EP01","Hook"],["EP02","Conflict"],["EP03","Brand Turn"],["EP04","Replay"]].map(([ep,label],idx)=><div key={ep} style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:14,background:idx%2===0?"linear-gradient(135deg,#17302a,#0a0a08)":"linear-gradient(135deg,#2a1509,#080605)",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:14,overflow:"hidden"}}>
+                      <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,transparent,rgba(0,0,0,.7)),radial-gradient(circle at 50% 30%,rgba(253,186,116,.18),transparent 36%)"}}/>
+                      <div style={{position:"absolute",top:12,right:12,width:28,height:28,borderRadius:"50%",border:"1px solid rgba(253,186,116,.28)",background:"rgba(0,0,0,.32)",display:"flex",alignItems:"center",justifyContent:"center",color:"var(--amber)",fontSize:10}}>▶</div>
+                      <div style={{position:"relative",zIndex:2}}><p style={{fontFamily:"var(--mn)",fontSize:8,letterSpacing:".18em",color:"var(--amber)",marginBottom:5}}>{ep}</p><p style={{fontWeight:700,fontSize:13,color:"rgba(255,244,223,.84)"}}>{label}</p></div>
+                    </div>)}
+                  </div>
+                ) : (
+                  <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"linear-gradient(135deg,#1d1008,#050505)",padding:18,display:"grid",gridTemplateColumns:"1.1fr .9fr",gap:14}}>
+                    <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 22% 24%,rgba(249,115,22,.2),transparent 34%),radial-gradient(circle at 78% 72%,rgba(124,58,237,.14),transparent 36%)",pointerEvents:"none"}}/>
+                    <div style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:16,background:"rgba(0,0,0,.34)",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:16,overflow:"hidden"}}>
+                      <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,transparent,rgba(0,0,0,.72)),radial-gradient(circle at 50% 32%,rgba(253,186,116,.2),transparent 34%)"}}/>
+                      <div style={{position:"relative",zIndex:2}}><p style={{fontFamily:"var(--mn)",fontSize:8,letterSpacing:".18em",color:"var(--amber)",marginBottom:5}}>HERO FILM</p><p style={{fontWeight:700,fontSize:14,color:"rgba(255,244,223,.84)"}}>Creator Upload</p></div>
+                    </div>
+                    <div style={{position:"relative",zIndex:2,display:"grid",gap:10}}>
+                      {["3–10 MIN FILM","REAL CREATOR","BRAND USAGE"].map(label=><div key={label} style={{border:"1px solid rgba(253,186,116,.18)",borderRadius:14,padding:"13px 12px",background:"rgba(0,0,0,.38)",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".18em",textTransform:"uppercase",color:"rgba(253,186,116,.74)",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center"}}>{label}</div>)}
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div style={{padding:24}}><div style={{width:38,height:38,borderRadius:"50%",border:"1px solid rgba(253,186,116,.2)",background:"rgba(249,115,22,.1)",display:"flex",alignItems:"center",justifyContent:"center",color:"rgba(253,186,116,.78)",fontSize:17,marginBottom:18}}>◆</div><h3 className="ttl" style={{fontSize:22,color:"#fff4df",marginBottom:11}}>{o.title}</h3><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.52)",marginBottom:13}}>{o.copy}</p>{o.bullets.map(b=><p key={b} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:9,padding:"9px 13px",fontSize:12.5,lineHeight:1.58,color:"rgba(255,244,223,.48)",marginBottom:7}}>{b}</p>)}</div>
+            </div>)}
+          </div>
+        </Rv>
+
+        <HR/>
+        <Rv>
+          <div style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
+            <div style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:36}}>
+              <div><Lbl c="Audience"/><BigT c="Who Is This For"/></div>
+              <div><div style={{display:"grid",gap:9,marginBottom:22}}>{TRAVEL_AUDIENCE.map(item=><div key={item} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:11,padding:"11px 16px",fontSize:13.5,lineHeight:1.68,color:"rgba(255,244,223,.6)"}}>{item}</div>)}</div><p style={{fontSize:14,fontStyle:"italic",lineHeight:1.82,color:"rgba(253,186,116,.72)"}}>If you're spending on creator content and not getting the results the brief promised — this is for you.</p></div>
+            </div>
+          </div>
+        </Rv>
+
+        <HR/>
+        <Rv>
+          <Lbl c="Why Bangzuu"/><BigT c="Why Bangzuu"/>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:14,marginTop:28}}>{TRAVEL_WHY.map(([b,c])=><div key={b} className="card" style={{background:"rgba(0,0,0,.28)",minHeight:180,display:"flex",flexDirection:"column",justifyContent:"center"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.5)"}}>{c}</p></div>)}</div>
+        </Rv>
+
+        <HR/>
+        <Rv><Lbl c="FAQ"/><BigT c="FAQ"/><div style={{marginTop:28}}>{TRAVEL_FAQ.map(([q,a])=><details key={q} className="faq"><summary style={{fontWeight:700,color:"#fff4df",fontSize:14}}>{q}</summary><p style={{marginTop:12,fontSize:13.5,lineHeight:1.82,color:"rgba(255,244,223,.52)"}}>{a}</p></details>)}</div></Rv>
+
+        <HR/>
+        <Rv>
+          <div id="travel-register" style={{border:"1px solid rgba(255,255,255,.16)",borderRadius:26,background:"rgba(255,255,255,.07)",padding:52,textAlign:"center",position:"relative",overflow:"hidden"}}>
+            <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 50% 30%,rgba(255,244,223,.06),transparent 50%)",pointerEvents:"none"}}/>
+            <div style={{position:"relative",zIndex:1}}><Lbl c="Register interest"/><BigT c="Ready to Make Content People Actually Watch?" sz={48}/><p style={{maxWidth:560,margin:"18px auto 0",fontSize:15,lineHeight:1.88,color:"rgba(255,244,223,.58)"}}>Stop renting attention. Start owning the story. Register your interest and we'll be in touch within 48 hours.</p><RegForm/><p style={{marginTop:14,fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".18em",textTransform:"uppercase",color:"rgba(255,255,255,.42)"}}>We review every submission. Limited spots available per quarter.</p></div>
           </div>
         </Rv>
       </div>
@@ -1239,13 +1373,14 @@ export default function App() {
       <Header page={page} setPage={setPage}/>
       <main style={{position:"relative",zIndex:10}}>
         {page==="home"&&<HomePage/>}
+        {page==="travel"&&<TravelPage/>}
         {page==="entertainment"&&<EntertainmentPage/>}
         {page==="fitness"&&<FitnessPage/>}
       </main>
       <footer style={{position:"relative",zIndex:10,borderTop:"1px solid rgba(255,255,255,.07)",padding:"32px 24px"}}>
         <div style={{maxWidth:1280,margin:"0 auto",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:10,fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".22em",textTransform:"uppercase",color:"rgba(255,244,223,.32)"}}>
           <span>© 2026 Bangzuu Studios</span>
-          <span>{page==="home"?"AI // Story // Distribution":page==="entertainment"?"Entertainment // Media // Micro-drama":"Fitness // Lifestyle // DTC"}</span>
+          <span>{page==="home"?"AI // Story // Distribution":page==="travel"?"Travel // Tourism // Creator Story":page==="entertainment"?"Entertainment // Media // Micro-drama":"Fitness // Lifestyle // DTC"}</span>
         </div>
       </footer>
     </>
