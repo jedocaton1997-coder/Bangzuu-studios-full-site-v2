@@ -1,4 +1,14 @@
 import { useState, useEffect, useRef } from "react";
+import creatorUploadVisual from "./assets/creator-upload-visual.png";
+import episodeHookVisual from "./assets/episode-hook-visual.png";
+import episodeConflictVisual from "./assets/episode-conflict-visual.png";
+import episodeBrandTurnVisual from "./assets/episode-brand-turn-visual.png";
+import episodeReplayVisual from "./assets/episode-replay-visual.png";
+import processBrandStrategyVisual from "./assets/process-brand-strategy.png";
+import processAiProductionVisual from "./assets/process-ai-production.png";
+import processCreatorDistributionVisual from "./assets/process-creator-distribution.png";
+import processReusableAssetVisual from "./assets/process-reusable-asset.png";
+import heroBackgroundVideo from "./assets/hero-background-video.mp4";
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
@@ -445,6 +455,28 @@ function ProcessSVG({ type }) {
   );
 }
 
+const PROCESS_VISUALS={
+  brand:processBrandStrategyVisual,
+  ai:processAiProductionVisual,
+  creator:processCreatorDistributionVisual,
+  asset:processReusableAssetVisual,
+};
+
+function ProcessCardVisual({ type }) {
+  const image = PROCESS_VISUALS[type];
+  return (
+    <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"#060505"}}>
+      <img
+        src={image}
+        alt=""
+        aria-hidden="true"
+        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",display:"block",filter:"saturate(1.02) contrast(1.05)"}}
+      />
+      <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,rgba(0,0,0,.04),rgba(0,0,0,.24)),radial-gradient(circle at 20% 12%,rgba(0,0,0,.48),transparent 28%)",pointerEvents:"none"}}/>
+    </div>
+  );
+}
+
 function StudioSVG() {
   return (
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" className="animated-panel" style={{ width:"100%", height:"auto", display:"block", borderRadius:18, border:"1px solid rgba(255,255,255,.08)", overflow:"hidden" }}>
@@ -804,6 +836,17 @@ function HomePage() {
     <>
       {/* HERO */}
       <div style={{position:"relative",minHeight:"100vh",display:"flex",flexDirection:"column",justifyContent:"center",overflow:"hidden"}}>
+        <video
+          src={heroBackgroundVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",zIndex:0,opacity:.78,filter:"saturate(.9) contrast(1.05) brightness(.78)"}}
+        />
+        <div style={{position:"absolute",inset:0,zIndex:1,background:"linear-gradient(to bottom,rgba(6,5,5,.82),rgba(6,5,5,.58) 36%,rgba(6,5,5,.7) 72%,var(--bg)),radial-gradient(ellipse 70% 46% at 50% 38%,rgba(0,0,0,.48),transparent 62%)",pointerEvents:"none"}}/>
         <Particles/>
         <div className="hero-grid"/>
         <div data-parallax=".03" className="parallax-layer ambient-glow" style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 78% 58% at 50% 0%,rgba(249,115,22,.11) 0%,transparent 60%)",zIndex:2,pointerEvents:"none"}}/>
@@ -868,7 +911,7 @@ function HomePage() {
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14}}>
               {PROCESS.map(([num,title,copy,type])=>(
                 <div key={num} className="card" style={{padding:0,overflow:"hidden",height:"100%",display:"flex",flexDirection:"column"}}>
-                  <div style={{position:"relative",aspectRatio:"1 / 1",overflow:"hidden",borderBottom:"1px solid rgba(255,255,255,.07)",flexShrink:0}}><ProcessSVG type={type}/><div style={{position:"absolute",top:12,left:12,background:"rgba(0,0,0,.62)",border:"1px solid rgba(0,0,0,.18)",borderRadius:50,padding:"3px 11px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".2em",color:"var(--amber)",backdropFilter:"blur(8px)"}}>{num}</div></div>
+                  <div style={{position:"relative",aspectRatio:"1 / 1",overflow:"hidden",borderBottom:"1px solid rgba(255,255,255,.07)",flexShrink:0}}><ProcessCardVisual type={type}/><div style={{position:"absolute",top:12,left:12,background:"rgba(0,0,0,.62)",border:"1px solid rgba(0,0,0,.18)",borderRadius:50,padding:"3px 11px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".2em",color:"var(--amber)",backdropFilter:"blur(8px)"}}>{num}</div></div>
                   <div style={{padding:20,flex:1}}><h3 className="ttl" style={{fontSize:20,color:"#fff4df",marginBottom:7}}>{title}</h3><p style={{fontSize:12.5,lineHeight:1.68,color:"rgba(255,244,223,.44)"}}>{copy}</p></div>
                 </div>
               ))}
@@ -975,6 +1018,13 @@ const TRAVEL_OFFERS=[
   {title:"Vertical Content Series for Brands",copy:"Short-form, social-first branded series — built to live on the platforms where your audience already spends time. Each series is built around your brand as a core story device, developed with AI-assisted production, and designed with cinematic trailers that hook from the first second.",bullets:["Multi-episode format that builds repeat touchpoints — not one-and-done exposure","Brand integration written into the DNA of the story — not added after the fact","Scalable: start with a pilot series, expand what works"]},
   {title:"Creator-Led Mini-Movies",copy:"3–10 minute branded entertainment films, built around real influencers and their existing audiences. Your brand becomes the engine of the plot. The creator uploads to their channel. You walk away with a hero content asset you own and can reuse.",bullets:["Native to the creator's audience — feels like their content, not your ad","Full brand usage rights for paid, owned, and social channels","Story templates built for travel, VPN, insurance, fintech, and destination brands — ready to pitch fast"]}
 ];
+
+const EPISODE_VISUALS=[
+  {ep:"EP01",label:"Hook",image:episodeHookVisual},
+  {ep:"EP02",label:"Conflict",image:episodeConflictVisual},
+  {ep:"EP03",label:"Brand Turn",image:episodeBrandTurnVisual},
+  {ep:"EP04",label:"Replay",image:episodeReplayVisual},
+];
 const TRAVEL_AUDIENCE=["Travel brands that already invest in influencer marketing and want the content to work harder","VPNs, travel insurance providers, and eSIM brands looking for story-first sponsor integrations","OTAs, booking platforms, and travel apps that want hero content — not just ad inventory","Tourism boards and destination marketing organisations ready to think like a media brand","Travel fintech and loyalty programs with a content budget and something worth saying","Any brand that works with travel creators and is tired of paying for reads that get skipped"];
 const TRAVEL_WHY=[
   ["We make your brand the plot.","Not the pause before the content. Not the logo at the end. The reason the story exists."],
@@ -1049,8 +1099,9 @@ function TravelPage() {
                 {i===0 ? (
                   <div style={{position:"relative",width:"100%",height:"100%",background:"linear-gradient(135deg,#10211b,#060505)",display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:14,overflow:"hidden"}}>
                     <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 20% 22%,rgba(249,115,22,.18),transparent 34%),radial-gradient(circle at 82% 72%,rgba(52,211,153,.14),transparent 36%)",pointerEvents:"none"}}/>
-                    {[["EP01","Hook"],["EP02","Conflict"],["EP03","Brand Turn"],["EP04","Replay"]].map(([ep,label],idx)=><div key={ep} style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:14,background:idx%2===0?"linear-gradient(135deg,#17302a,#0a0a08)":"linear-gradient(135deg,#2a1509,#080605)",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:14,overflow:"hidden"}}>
-                      <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,transparent,rgba(0,0,0,.7)),radial-gradient(circle at 50% 30%,rgba(253,186,116,.18),transparent 36%)"}}/>
+                    {EPISODE_VISUALS.map(({ep,label,image})=><div key={ep} style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:14,background:"#060505",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:14,overflow:"hidden"}}>
+                      <img src={image} alt="" aria-hidden="true" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:.84,filter:"saturate(.95) contrast(1.08)"}}/>
+                      <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,rgba(0,0,0,.08),rgba(0,0,0,.76)),radial-gradient(circle at 50% 30%,rgba(253,186,116,.12),transparent 36%)"}}/>
                       <div style={{position:"absolute",top:12,right:12,width:28,height:28,borderRadius:"50%",border:"1px solid rgba(253,186,116,.28)",background:"rgba(0,0,0,.32)",display:"flex",alignItems:"center",justifyContent:"center",color:"var(--amber)",fontSize:10}}>▶</div>
                       <div style={{position:"relative",zIndex:2}}><p style={{fontFamily:"var(--mn)",fontSize:8,letterSpacing:".18em",color:"var(--amber)",marginBottom:5}}>{ep}</p><p style={{fontWeight:700,fontSize:13,color:"rgba(255,244,223,.84)"}}>{label}</p></div>
                     </div>)}
@@ -1059,7 +1110,8 @@ function TravelPage() {
                   <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"linear-gradient(135deg,#1d1008,#050505)",padding:18,display:"grid",gridTemplateColumns:"1.1fr .9fr",gap:14}}>
                     <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 22% 24%,rgba(249,115,22,.2),transparent 34%),radial-gradient(circle at 78% 72%,rgba(124,58,237,.14),transparent 36%)",pointerEvents:"none"}}/>
                     <div style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:16,background:"rgba(0,0,0,.34)",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:16,overflow:"hidden"}}>
-                      <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,transparent,rgba(0,0,0,.72)),radial-gradient(circle at 50% 32%,rgba(253,186,116,.2),transparent 34%)"}}/>
+                      <img src={creatorUploadVisual} alt="" aria-hidden="true" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:.82,filter:"saturate(.95) contrast(1.08)"}}/>
+                      <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,rgba(0,0,0,.05),rgba(0,0,0,.74)),radial-gradient(circle at 50% 32%,rgba(253,186,116,.14),transparent 34%)"}}/>
                       <div style={{position:"relative",zIndex:2}}><p style={{fontFamily:"var(--mn)",fontSize:8,letterSpacing:".18em",color:"var(--amber)",marginBottom:5}}>HERO FILM</p><p style={{fontWeight:700,fontSize:14,color:"rgba(255,244,223,.84)"}}>Creator Upload</p></div>
                     </div>
                     <div style={{position:"relative",zIndex:2,display:"grid",gap:10}}>
