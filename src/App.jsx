@@ -8,7 +8,6 @@ import processBrandStrategyVisual from "./assets/process-brand-strategy.png";
 import processAiProductionVisual from "./assets/process-ai-production.png";
 import processCreatorDistributionVisual from "./assets/process-creator-distribution.png";
 import processReusableAssetVisual from "./assets/process-reusable-asset.png";
-import heroBackgroundVideo from "./assets/hero-background-video.mp4";
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
@@ -455,28 +454,6 @@ function ProcessSVG({ type }) {
   );
 }
 
-const PROCESS_VISUALS={
-  brand:processBrandStrategyVisual,
-  ai:processAiProductionVisual,
-  creator:processCreatorDistributionVisual,
-  asset:processReusableAssetVisual,
-};
-
-function ProcessCardVisual({ type }) {
-  const image = PROCESS_VISUALS[type];
-  return (
-    <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"#060505"}}>
-      <img
-        src={image}
-        alt=""
-        aria-hidden="true"
-        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",display:"block",filter:"saturate(1.02) contrast(1.05)"}}
-      />
-      <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,rgba(0,0,0,.04),rgba(0,0,0,.24)),radial-gradient(circle at 20% 12%,rgba(0,0,0,.48),transparent 28%)",pointerEvents:"none"}}/>
-    </div>
-  );
-}
-
 function StudioSVG() {
   return (
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" className="animated-panel" style={{ width:"100%", height:"auto", display:"block", borderRadius:18, border:"1px solid rgba(255,255,255,.08)", overflow:"hidden" }}>
@@ -836,17 +813,6 @@ function HomePage() {
     <>
       {/* HERO */}
       <div style={{position:"relative",minHeight:"100vh",display:"flex",flexDirection:"column",justifyContent:"center",overflow:"hidden"}}>
-        <video
-          src={heroBackgroundVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",zIndex:0,opacity:.78,filter:"saturate(.9) contrast(1.05) brightness(.78)"}}
-        />
-        <div style={{position:"absolute",inset:0,zIndex:1,background:"linear-gradient(to bottom,rgba(6,5,5,.82),rgba(6,5,5,.58) 36%,rgba(6,5,5,.7) 72%,var(--bg)),radial-gradient(ellipse 70% 46% at 50% 38%,rgba(0,0,0,.48),transparent 62%)",pointerEvents:"none"}}/>
         <Particles/>
         <div className="hero-grid"/>
         <div data-parallax=".03" className="parallax-layer ambient-glow" style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 78% 58% at 50% 0%,rgba(249,115,22,.11) 0%,transparent 60%)",zIndex:2,pointerEvents:"none"}}/>
@@ -911,7 +877,7 @@ function HomePage() {
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14}}>
               {PROCESS.map(([num,title,copy,type])=>(
                 <div key={num} className="card" style={{padding:0,overflow:"hidden",height:"100%",display:"flex",flexDirection:"column"}}>
-                  <div style={{position:"relative",aspectRatio:"1 / 1",overflow:"hidden",borderBottom:"1px solid rgba(255,255,255,.07)",flexShrink:0}}><ProcessCardVisual type={type}/><div style={{position:"absolute",top:12,left:12,background:"rgba(0,0,0,.62)",border:"1px solid rgba(0,0,0,.18)",borderRadius:50,padding:"3px 11px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".2em",color:"var(--amber)",backdropFilter:"blur(8px)"}}>{num}</div></div>
+                  <div style={{position:"relative",aspectRatio:"1 / 1",overflow:"hidden",borderBottom:"1px solid rgba(255,255,255,.07)",flexShrink:0}}><ProcessSVG type={type}/><div style={{position:"absolute",top:12,left:12,background:"rgba(0,0,0,.62)",border:"1px solid rgba(0,0,0,.18)",borderRadius:50,padding:"3px 11px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".2em",color:"var(--amber)",backdropFilter:"blur(8px)"}}>{num}</div></div>
                   <div style={{padding:20,flex:1}}><h3 className="ttl" style={{fontSize:20,color:"#fff4df",marginBottom:7}}>{title}</h3><p style={{fontSize:12.5,lineHeight:1.68,color:"rgba(255,244,223,.44)"}}>{copy}</p></div>
                 </div>
               ))}
