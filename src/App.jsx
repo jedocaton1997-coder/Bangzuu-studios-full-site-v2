@@ -11,13 +11,18 @@ import processReusableAssetVisual from "./assets/process-reusable-asset.png";
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;min-width:0}
 :root{
   --bg:#060505;--amber:#f97316;--amber-l:#fde68a;--amber-d:#7c3010;
   --violet:#7c3aed;--text:#fff4df;
   --title:'Bebas Neue',sans-serif;--mono:'Space Mono',monospace;--body:'DM Sans',sans-serif;
 }
-body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;}
+html{scroll-behavior:smooth;width:100%;max-width:100%;overflow-x:hidden;}
+body{width:100%;max-width:100%;background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;}
+#root{width:100%;max-width:100%;overflow-x:clip;}
+img,svg,video,canvas{max-width:100%;height:auto;}
+button,input,textarea,select{font:inherit;max-width:100%;}
+p,h1,h2,h3,h4,h5,h6,a,span,li,summary{overflow-wrap:break-word;}
 ::selection{background:var(--amber);color:#000;}
 ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--amber-d);border-radius:2px;}
 
@@ -50,7 +55,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:h
 @keyframes scrollNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 @keyframes glowBreath{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.7;transform:scale(1.08)}}
 
-.ttl{font-family:var(--title);letter-spacing:.02em;line-height:.94;}
+.ttl{font-family:var(--title);letter-spacing:.02em;line-height:.94;overflow-wrap:break-word;}
 .mn{font-family:var(--mono);}
 .rv{opacity:0;transform:translateY(34px) scale(.985);filter:blur(8px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1),filter .8s cubic-bezier(.2,.8,.2,1);}
 .rv.in{opacity:1;transform:none;filter:blur(0);}
@@ -70,7 +75,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:h
 .nav-cta{color:#fff4df;}
 .nav-cta:hover{color:var(--amber-l);}
 
-.card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:20px;background:rgba(255,255,255,.03);padding:24px;transition:all .28s cubic-bezier(.2,.8,.2,1);}
+.card{position:relative;overflow:hidden;max-width:100%;border:1px solid rgba(255,255,255,.08);border-radius:20px;background:rgba(255,255,255,.03);padding:24px;transition:all .28s cubic-bezier(.2,.8,.2,1);}
 .card::before{content:'';position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,244,223,.11) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s ease;pointer-events:none;}
 .card:hover{border-color:rgba(249,115,22,.28);transform:translateY(-7px) scale(1.01);box-shadow:0 24px 65px rgba(0,0,0,.46),0 0 40px rgba(249,115,22,.08);}
 .card:hover::before{transform:translateX(120%);}
@@ -113,6 +118,66 @@ summary::after{content:' ↓';color:var(--amber);}
 .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font-family:var(--mono);font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,244,223,.38);animation:scrollNudge 2.2s ease-in-out infinite;}
 .ambient-glow{animation:glowBreath 7s ease-in-out infinite;}
 .parallax-layer{will-change:transform;}
+@media (max-width: 860px){
+  body{overflow-x:hidden;}
+  .cursor-glow{display:none;}
+  .header-inner{padding:11px 16px !important;gap:10px !important;align-items:flex-start !important;flex-direction:column !important;}
+  .nav-wrap{width:100%;max-width:100%;overflow:visible;justify-content:flex-start;align-items:flex-start;flex-wrap:wrap;border-radius:16px;padding:6px;row-gap:2px;}
+  .nav-link,.nbtn{font-size:9px;padding:9px 10px;letter-spacing:.14em;white-space:normal;text-align:left;line-height:1.3;}
+  .nav-divider{display:none;}
+  .industry-menu{left:0 !important;right:auto !important;transform:none !important;width:min(calc(100vw - 32px),270px) !important;}
+  .industry-submenu{position:static !important;width:100% !important;margin-top:8px;box-shadow:none !important;}
+  .page-shell{padding:0 16px !important;}
+  .home-hero-inner,.industry-hero-inner{padding:142px 16px 48px !important;}
+  .home-hero-title{font-size:clamp(42px,14vw,78px) !important;line-height:.9 !important;}
+  .hero-copy{font-size:15px !important;line-height:1.72 !important;margin-bottom:28px !important;}
+  .hero-cta-row,.stat-row{gap:10px !important;margin-bottom:30px !important;}
+  .stat-row > div{flex:1 1 142px;min-width:0;}
+  .industry-stat-row > div{flex:1 1 138px;min-width:0;}
+  .split-grid,.split-grid-start,.sticky-split,.offer-grid,.audience-grid,.why-grid{grid-template-columns:1fr !important;gap:24px !important;}
+  .three-grid,.stats-grid,.market-four-grid{grid-template-columns:1fr !important;}
+  .responsive-grid{grid-template-columns:1fr !important;}
+  .panel{padding:24px !important;border-radius:20px !important;}
+  .cta-panel{padding:30px 18px !important;border-radius:20px !important;}
+  .sticky-visual{position:relative !important;top:auto !important;}
+  .media-tile-grid{height:310px !important;}
+  .media-tile-title{font-size:20px !important;letter-spacing:.1em !important;line-height:1.05 !important;}
+  .mobile-episode-art{padding:10px !important;gap:8px !important;}
+  .mobile-upload-art{grid-template-columns:1fr !important;padding:12px !important;}
+  .mobile-upload-meta{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+  .mobile-upload-meta > div{padding:10px 8px !important;font-size:7.5px !important;letter-spacing:.13em !important;}
+  .card{border-radius:16px;}
+  .card:hover,.animated-panel:hover,.btn:hover,.btn-o:hover,.reg-btn:hover{transform:none !important;}
+  .rv{filter:none;transform:translateY(20px);transition-duration:.55s;}
+  .faq{padding:16px;}
+  .section-rule{margin:48px 0 !important;}
+}
+@media (max-width: 560px){
+  .btn,.btn-o,.reg-btn{width:100%;text-align:center;padding:12px 18px;font-size:11px;letter-spacing:.1em;}
+  .hero-badge{max-width:100%;white-space:normal;text-align:center;justify-content:center;line-height:1.5;}
+  .home-hero-inner,.industry-hero-inner{padding:150px 14px 42px !important;}
+  .industry-hero-kicker{display:flex !important;width:100%;white-space:normal;line-height:1.45;justify-content:center;text-align:center;}
+  .page-shell{padding:0 14px !important;}
+  .panel{padding:18px !important;}
+  .card{padding:18px;}
+  .card-body{padding:18px !important;}
+  .process-grid{grid-template-columns:1fr !important;}
+  .format-card-body{min-height:auto !important;padding:18px !important;}
+  .media-tile-grid{height:260px !important;gap:7px !important;padding:9px !important;}
+  .media-tile-title{font-size:18px !important;letter-spacing:.08em !important;}
+  .visual-label{left:14px !important;bottom:14px !important;font-size:7px !important;letter-spacing:.18em !important;}
+  .register-form input{flex-basis:100% !important;width:100%;}
+  .mobile-episode-art{grid-template-columns:1fr 1fr !important;padding:8px !important;gap:7px !important;}
+  .mobile-episode-card{padding:10px !important;border-radius:10px !important;}
+  .mobile-episode-card p:first-child{font-size:7px !important;letter-spacing:.14em !important;}
+  .mobile-episode-card p:last-child{font-size:11px !important;}
+  .mobile-upload-meta{grid-template-columns:1fr !important;}
+  .mobile-upload-meta > div{min-height:38px;padding:8px !important;}
+  .stat-row > div,.industry-stat-row > div{flex-basis:100%;}
+  .hero-visual-shell{max-width:100% !important;}
+  .section-rule{margin:38px 0 !important;}
+  footer{padding:26px 16px !important;}
+}
 `;
 
 function useReveal() {
@@ -264,10 +329,10 @@ function TravelSVG() {
   ];
 
   return (
-    <div style={{position:"relative",height:380,display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"54px 1fr 1fr",gap:10,padding:12,background:"linear-gradient(135deg,#101719 0%,#071012 100%)",borderRadius:"18px 18px 0 0",overflow:"hidden"}}>
+    <div className="media-tile-grid" style={{position:"relative",height:380,display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"54px 1fr 1fr",gap:10,padding:12,background:"linear-gradient(135deg,#101719 0%,#071012 100%)",borderRadius:"18px 18px 0 0",overflow:"hidden"}}>
       <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 18% 20%,rgba(253,186,116,.16),transparent 34%),radial-gradient(circle at 82% 72%,rgba(52,211,153,.12),transparent 32%)",pointerEvents:"none",zIndex:1}}/>
       <div style={{gridColumn:"1 / -1",gridRow:"1",display:"flex",alignItems:"center",padding:"0 16px",background:"rgba(0,0,0,.56)",borderBottom:"1px solid rgba(253,186,116,.26)",borderRadius:"14px 14px 0 0",zIndex:3}}>
-        <div style={{fontFamily:"var(--title)",fontSize:24,letterSpacing:".16em",color:"#fde68a",textTransform:"uppercase",textShadow:"0 0 12px rgba(249,115,22,.35)"}}>Travel & Tourism</div>
+        <div className="media-tile-title" style={{fontFamily:"var(--title)",fontSize:24,letterSpacing:".16em",color:"#fde68a",textTransform:"uppercase",textShadow:"0 0 12px rgba(249,115,22,.35)"}}>Travel & Tourism</div>
       </div>
       {travelImages.map((src, i) => (
         <div key={src} style={{position:"relative",zIndex:2,overflow:"hidden",borderRadius:14,minHeight:0}}>
@@ -278,7 +343,7 @@ function TravelSVG() {
           />
         </div>
       ))}
-      <div style={{position:"absolute",left:24,bottom:18,zIndex:4,background:"rgba(0,0,0,.62)",border:"1px solid rgba(253,186,116,.28)",borderRadius:999,padding:"8px 14px",fontFamily:"var(--mono)",fontSize:8.5,letterSpacing:".22em",textTransform:"uppercase",color:"#fde68a",backdropFilter:"blur(10px)"}}>Destination Story</div>
+      <div className="visual-label" style={{position:"absolute",left:24,bottom:18,zIndex:4,background:"rgba(0,0,0,.62)",border:"1px solid rgba(253,186,116,.28)",borderRadius:999,padding:"8px 14px",fontFamily:"var(--mono)",fontSize:8.5,letterSpacing:".22em",textTransform:"uppercase",color:"#fde68a",backdropFilter:"blur(10px)"}}>Destination Story</div>
     </div>
   );
 }
@@ -292,10 +357,10 @@ function EntSVG() {
   ];
 
   return (
-    <div style={{position:"relative",height:380,display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"54px 1fr 1fr",gap:10,padding:12,background:"linear-gradient(135deg,#170c16 0%,#100a1f 100%)",borderRadius:"18px 18px 0 0",overflow:"hidden"}}>
+    <div className="media-tile-grid" style={{position:"relative",height:380,display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"54px 1fr 1fr",gap:10,padding:12,background:"linear-gradient(135deg,#170c16 0%,#100a1f 100%)",borderRadius:"18px 18px 0 0",overflow:"hidden"}}>
       <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 20% 22%,rgba(249,115,22,.16),transparent 34%),radial-gradient(circle at 82% 72%,rgba(124,58,237,.2),transparent 36%)",pointerEvents:"none",zIndex:1}}/>
       <div style={{gridColumn:"1 / -1",gridRow:"1",display:"flex",alignItems:"center",padding:"0 16px",background:"rgba(0,0,0,.56)",borderBottom:"1px solid rgba(253,186,116,.26)",borderRadius:"14px 14px 0 0",zIndex:3}}>
-        <div style={{fontFamily:"var(--title)",fontSize:24,letterSpacing:".16em",color:"#fde68a",textTransform:"uppercase",textShadow:"0 0 12px rgba(249,115,22,.35)"}}>Entertainment & Media</div>
+        <div className="media-tile-title" style={{fontFamily:"var(--title)",fontSize:24,letterSpacing:".16em",color:"#fde68a",textTransform:"uppercase",textShadow:"0 0 12px rgba(249,115,22,.35)"}}>Entertainment & Media</div>
       </div>
       {entertainmentImages.map((src, i) => (
         <div key={src} style={{position:"relative",zIndex:2,overflow:"hidden",borderRadius:14,minHeight:0}}>
@@ -306,7 +371,7 @@ function EntSVG() {
           />
         </div>
       ))}
-      <div style={{position:"absolute",left:24,bottom:18,zIndex:4,background:"rgba(0,0,0,.62)",border:"1px solid rgba(253,186,116,.28)",borderRadius:999,padding:"8px 14px",fontFamily:"var(--mono)",fontSize:8.5,letterSpacing:".22em",textTransform:"uppercase",color:"#fde68a",backdropFilter:"blur(10px)"}}>Episode Slate</div>
+      <div className="visual-label" style={{position:"absolute",left:24,bottom:18,zIndex:4,background:"rgba(0,0,0,.62)",border:"1px solid rgba(253,186,116,.28)",borderRadius:999,padding:"8px 14px",fontFamily:"var(--mono)",fontSize:8.5,letterSpacing:".22em",textTransform:"uppercase",color:"#fde68a",backdropFilter:"blur(10px)"}}>Episode Slate</div>
     </div>
   );
 }
@@ -320,10 +385,10 @@ function FitSVG() {
   ];
 
   return (
-    <div style={{position:"relative",height:380,display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"54px 1fr 1fr",gap:10,padding:12,background:"linear-gradient(135deg,#1f1008 0%,#0d120f 100%)",borderRadius:"18px 18px 0 0",overflow:"hidden"}}>
+    <div className="media-tile-grid" style={{position:"relative",height:380,display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"54px 1fr 1fr",gap:10,padding:12,background:"linear-gradient(135deg,#1f1008 0%,#0d120f 100%)",borderRadius:"18px 18px 0 0",overflow:"hidden"}}>
       <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 20% 22%,rgba(249,115,22,.18),transparent 34%),radial-gradient(circle at 82% 72%,rgba(52,211,153,.12),transparent 36%)",pointerEvents:"none",zIndex:1}}/>
       <div style={{gridColumn:"1 / -1",gridRow:"1",display:"flex",alignItems:"center",padding:"0 16px",background:"rgba(0,0,0,.56)",borderBottom:"1px solid rgba(253,186,116,.26)",borderRadius:"14px 14px 0 0",zIndex:3}}>
-        <div style={{fontFamily:"var(--title)",fontSize:24,letterSpacing:".16em",color:"#fde68a",textTransform:"uppercase",textShadow:"0 0 12px rgba(249,115,22,.35)"}}>Fitness & Lifestyle</div>
+        <div className="media-tile-title" style={{fontFamily:"var(--title)",fontSize:24,letterSpacing:".16em",color:"#fde68a",textTransform:"uppercase",textShadow:"0 0 12px rgba(249,115,22,.35)"}}>Fitness & Lifestyle</div>
       </div>
       {fitnessImages.map((src, i) => (
         <div key={src} style={{position:"relative",zIndex:2,overflow:"hidden",borderRadius:14,minHeight:0}}>
@@ -334,7 +399,7 @@ function FitSVG() {
           />
         </div>
       ))}
-      <div style={{position:"absolute",left:24,bottom:18,zIndex:4,background:"rgba(0,0,0,.62)",border:"1px solid rgba(253,186,116,.28)",borderRadius:999,padding:"8px 14px",fontFamily:"var(--mono)",fontSize:8.5,letterSpacing:".22em",textTransform:"uppercase",color:"#fde68a",backdropFilter:"blur(10px)"}}>Comeback Arc</div>
+      <div className="visual-label" style={{position:"absolute",left:24,bottom:18,zIndex:4,background:"rgba(0,0,0,.62)",border:"1px solid rgba(253,186,116,.28)",borderRadius:999,padding:"8px 14px",fontFamily:"var(--mono)",fontSize:8.5,letterSpacing:".22em",textTransform:"uppercase",color:"#fde68a",backdropFilter:"blur(10px)"}}>Comeback Arc</div>
     </div>
   );
 }
@@ -415,7 +480,7 @@ function ProcessSVG({ type }) {
   if (type === "brand") return (
     <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"#060505"}}>
       <img
-        src="https://i.ibb.co/gZnmZkzv/Chat-GPT-Image-May-12-2026-05-38-31-PM.png"
+        src={processBrandStrategyVisual}
         alt="Brand strategy visual"
         style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",display:"block",filter:"saturate(1.04) contrast(1.04)"}}
       />
@@ -425,7 +490,7 @@ function ProcessSVG({ type }) {
   if (type === "ai") return (
     <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"#060505"}}>
       <img
-        src="https://i.ibb.co/rRWrHW33/Chat-GPT-Image-May-12-2026-09-19-46-AM.png"
+        src={processAiProductionVisual}
         alt="AI-assisted production visual"
         style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",display:"block",filter:"saturate(1.04) contrast(1.04)"}}
       />
@@ -435,7 +500,7 @@ function ProcessSVG({ type }) {
   if (type === "creator") return (
     <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"#060505"}}>
       <img
-        src="https://i.ibb.co/zTbLdT2K/Chat-GPT-Image-May-12-2026-09-28-09-AM.png"
+        src={processCreatorDistributionVisual}
         alt="Creator distribution visual"
         style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",display:"block",filter:"saturate(1.04) contrast(1.04)"}}
       />
@@ -445,7 +510,7 @@ function ProcessSVG({ type }) {
   return (
     <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"#060505"}}>
       <img
-        src="https://i.ibb.co/4g5pP9Zt/Chat-GPT-Image-May-12-2026-09-33-21-AM.png"
+        src={processReusableAssetVisual}
         alt="Reusable asset visual"
         style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",display:"block",filter:"saturate(1.04) contrast(1.04)"}}
       />
@@ -721,12 +786,12 @@ function AthleteJourneySVG() {
 /* ── SHARED ── */
 const Lbl = ({c}) => <p style={{fontFamily:"var(--mn)",fontSize:10,letterSpacing:".3em",textTransform:"uppercase",color:"var(--amber)",marginBottom:12}}>{c}</p>;
 const BigT = ({c,sz=56}) => <h2 className="ttl" style={{fontSize:`clamp(28px,4.5vw,${sz}px)`,color:"#fff4df"}}>{c}</h2>;
-const HR = () => <div style={{width:"100%",height:1,background:"rgba(255,255,255,.06)",margin:"64px 0"}}/>;
+const HR = () => <div className="section-rule" style={{width:"100%",height:1,background:"rgba(255,255,255,.06)",margin:"64px 0"}}/>;
 const Rv = ({children,style={}}) => <div className="rv" style={style}>{children}</div>;
 
 function RegForm() {
   return (
-    <form style={{display:"flex",flexWrap:"wrap",gap:10,justifyContent:"center",marginTop:28}} onSubmit={e=>e.preventDefault()}>
+    <form className="register-form" style={{display:"flex",flexWrap:"wrap",gap:10,justifyContent:"center",marginTop:28}} onSubmit={e=>e.preventDefault()}>
       <input type="email" placeholder="Work email" style={{flex:"1 1 200px",background:"rgba(0,0,0,.5)",border:"1px solid rgba(255,255,255,.24)",borderRadius:50,padding:"12px 20px",color:"#fff4df",fontFamily:"var(--body)",fontSize:14,outline:"none"}}/>
       <input type="url" placeholder="Company website" style={{flex:"1 1 200px",background:"rgba(0,0,0,.5)",border:"1px solid rgba(255,255,255,.24)",borderRadius:50,padding:"12px 20px",color:"#fff4df",fontFamily:"var(--body)",fontSize:14,outline:"none"}}/>
       <button type="submit" className="reg-btn">Register Interest</button>
@@ -745,14 +810,14 @@ function Header({page,setPage}) {
   };
   return (
     <header style={{position:"fixed",top:0,left:0,right:0,zIndex:200,borderBottom:"1px solid rgba(255,255,255,.07)",background:"rgba(6,5,5,.92)",backdropFilter:"blur(20px)"}}>
-      <div style={{maxWidth:1280,margin:"0 auto",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:18}}>
+      <div className="header-inner" style={{maxWidth:1280,margin:"0 auto",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:18}}>
         <button onClick={()=>go("home")} style={{background:"none",border:"none",color:"#fff4df",fontFamily:"var(--mn)",fontSize:12,fontWeight:700,letterSpacing:".3em",textTransform:"uppercase",cursor:"pointer",whiteSpace:"nowrap"}}>Bangzuu<span style={{color:"var(--amber)"}}>*</span></button>
         <nav className="nav-wrap">
           <button className="nav-link" onClick={()=>go("home")}>Home</button>
           <span className="nav-divider">|</span>
           <div style={{position:"relative"}}>
             <button className="nbtn" onClick={()=>setDrop(d=>!d)}>Industries <span style={{color:"var(--amber)"}}>⌄</span></button>
-            {drop&&(<div style={{position:"absolute",left:"50%",transform:"translateX(-50%)",top:"calc(100% + 8px)",width:248,background:"rgba(8,6,6,.97)",border:"1px solid rgba(255,255,255,.08)",borderRadius:14,padding:8,backdropFilter:"blur(18px)",zIndex:300,boxShadow:"0 28px 65px rgba(0,0,0,.5)"}}>
+            {drop&&(<div className="industry-menu" style={{position:"absolute",left:"50%",transform:"translateX(-50%)",top:"calc(100% + 8px)",width:248,background:"rgba(8,6,6,.97)",border:"1px solid rgba(255,255,255,.08)",borderRadius:14,padding:8,backdropFilter:"blur(18px)",zIndex:300,boxShadow:"0 28px 65px rgba(0,0,0,.5)"}}>
               <button onClick={()=>go("travel")} style={{display:"block",width:"100%",background:"none",border:"none",borderRadius:9,padding:"9px 14px",textAlign:"left",color:"rgba(255,244,223,.62)",fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".17em",textTransform:"uppercase",transition:"all .14s",cursor:"pointer"}}
                 onMouseEnter={e=>{e.currentTarget.style.background="rgba(249,115,22,.1)";e.currentTarget.style.color="var(--amber-l)";}}
                 onMouseLeave={e=>{e.currentTarget.style.background="none";e.currentTarget.style.color="rgba(255,244,223,.62)";}}>
@@ -767,7 +832,7 @@ function Header({page,setPage}) {
                   <span>Entertainment & Media</span><span style={{color:"var(--amber)"}}>›</span>
                 </button>
                 {subDrop&&(
-                  <div style={{position:"absolute",left:"calc(100% + 8px)",top:0,width:228,background:"rgba(8,6,6,.97)",border:"1px solid rgba(255,255,255,.08)",borderRadius:14,padding:8,backdropFilter:"blur(18px)",zIndex:310,boxShadow:"0 28px 65px rgba(0,0,0,.5)"}}>
+                  <div className="industry-submenu" style={{position:"absolute",left:"calc(100% + 8px)",top:0,width:228,background:"rgba(8,6,6,.97)",border:"1px solid rgba(255,255,255,.08)",borderRadius:14,padding:8,backdropFilter:"blur(18px)",zIndex:310,boxShadow:"0 28px 65px rgba(0,0,0,.5)"}}>
                     {[["Microdramas","entertainment"],["AI / Production Studios","entertainment"],["Sales Agents","entertainment"]].map(([lbl,p])=>(
                       <button key={lbl} onClick={()=>go(p)} style={{display:"block",width:"100%",background:"none",border:"none",borderRadius:9,padding:"9px 14px",textAlign:"left",color:"rgba(255,244,223,.62)",fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".17em",textTransform:"uppercase",transition:"all .14s",cursor:"pointer"}}
                         onMouseEnter={e=>{e.currentTarget.style.background="rgba(249,115,22,.1)";e.currentTarget.style.color="var(--amber-l)";}}
@@ -818,32 +883,32 @@ function HomePage() {
         <div data-parallax=".03" className="parallax-layer ambient-glow" style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 78% 58% at 50% 0%,rgba(249,115,22,.11) 0%,transparent 60%)",zIndex:2,pointerEvents:"none"}}/>
         <div data-parallax="-.02" className="parallax-layer ambient-glow" style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 58% 48% at 20% 60%,rgba(124,58,237,.09) 0%,transparent 55%)",zIndex:2,pointerEvents:"none"}}/>
         <div style={{position:"absolute",bottom:0,left:0,right:0,height:180,background:"linear-gradient(to bottom,transparent,var(--bg))",zIndex:3,pointerEvents:"none"}}/>
-        <div style={{position:"relative",zIndex:10,maxWidth:1280,margin:"0 auto",padding:"130px 24px 60px",width:"100%"}}>
+        <div className="home-hero-inner" style={{position:"relative",zIndex:10,maxWidth:1280,margin:"0 auto",padding:"130px 24px 60px",width:"100%"}}>
           <div style={{display:"flex",justifyContent:"center",marginBottom:24}}>
-            <div style={{display:"inline-flex",alignItems:"center",gap:10,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"8px 18px",fontFamily:"var(--mn)",fontSize:10,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(255,244,223,.7)",background:"rgba(0,0,0,.32)",backdropFilter:"blur(10px)",animation:"fadeUp .6s ease both"}}>
+            <div className="hero-badge" style={{display:"inline-flex",alignItems:"center",gap:10,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"8px 18px",fontFamily:"var(--mn)",fontSize:10,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(255,244,223,.7)",background:"rgba(0,0,0,.32)",backdropFilter:"blur(10px)",animation:"fadeUp .6s ease both"}}>
               <span style={{color:"var(--amber)",fontSize:7.5}}>▶</span> AI // STORY // <Clock/>
             </div>
           </div>
-          <h1 className="ttl" style={{textAlign:"center",fontSize:"clamp(50px,10.5vw,128px)",lineHeight:.87,color:"#fff4df",animation:"fadeUp .7s .1s ease both",marginBottom:0}}>
+          <h1 className="ttl home-hero-title" style={{textAlign:"center",fontSize:"clamp(50px,10.5vw,128px)",lineHeight:.87,color:"#fff4df",animation:"fadeUp .7s .1s ease both",marginBottom:0}}>
             We Build Stories<br/><span style={{WebkitTextStroke:"1px rgba(249,115,22,.55)",color:"transparent"}}>Brands</span> Live Inside.
           </h1>
           <div style={{display:"flex",justifyContent:"center",margin:"22px 0"}}>
             <div style={{width:110,height:2,background:"linear-gradient(90deg,transparent,var(--amber),transparent)",animation:"lineGrow .8s .4s ease both",transformOrigin:"center"}}/>
           </div>
-          <p style={{textAlign:"center",maxWidth:660,margin:"0 auto 36px",fontSize:17,lineHeight:1.85,color:"rgba(255,244,223,.62)",animation:"fadeUp .7s .3s ease both"}}>
+          <p className="hero-copy" style={{textAlign:"center",maxWidth:660,margin:"0 auto 36px",fontSize:17,lineHeight:1.85,color:"rgba(255,244,223,.62)",animation:"fadeUp .7s .3s ease both"}}>
             Bangzuu Studios is an AI-native branded content studio. We create vertical content series, creator-led mini-movies, and micro-dramas that turn brand integrations into the engine of the story — not an interruption inside it.
           </p>
-          <div style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap",animation:"fadeUp .7s .45s ease both",marginBottom:48}}>
+          <div className="hero-cta-row" style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap",animation:"fadeUp .7s .45s ease both",marginBottom:48}}>
             <a href="#register" className="btn">Work With Us →</a>
             <a href="#what-we-build" className="btn-o">Explore What We Do</a>
           </div>
-          <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap",marginBottom:52}}>
+          <div className="stat-row" style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap",marginBottom:52}}>
             <StatPill num="$11B" label="Market 2025" delay={.5}/>
             <StatPill num="1.4B" label="Views (KFC)" delay={.65}/>
             <StatPill num="3×" label="Brand Recall" delay={.8}/>
             <StatPill num="4–8wk" label="Delivery" delay={.95}/>
           </div>
-          <div style={{maxWidth:720,margin:"0 auto"}}><TiltCard style={{boxShadow:"none",background:"transparent"}}><HeroSVG/></TiltCard></div>
+          <div className="hero-visual-shell" style={{maxWidth:720,margin:"0 auto"}}><TiltCard style={{boxShadow:"none",background:"transparent"}}><HeroSVG/></TiltCard></div>
           <div className="scroll-hint">Scroll</div>
         </div>
       </div>
@@ -852,10 +917,10 @@ function HomePage() {
       <Marquee/>
 
       {/* STUDIO */}
-      <div style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
+      <div className="page-shell" style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
         <HR/>
         <Rv>
-          <div id="about-us" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:44,alignItems:"center"}}>
+          <div id="about-us" className="split-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:44,alignItems:"center"}}>
             <div>
               <Lbl c="The Studio"/>
               <BigT c="The Studio" sz={62}/>
@@ -869,16 +934,16 @@ function HomePage() {
         {/* PROCESS */}
         <HR/>
         <Rv>
-          <div style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36,boxShadow:"0 28px 110px rgba(0,0,0,.32)"}}>
+          <div className="panel" style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36,boxShadow:"0 28px 110px rgba(0,0,0,.32)"}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:28,flexWrap:"wrap",gap:14}}>
               <div><Lbl c="Production system"/><BigT c="From brand brief to story asset."/></div>
               <p style={{maxWidth:380,fontSize:14,lineHeight:1.82,color:"rgba(255,244,223,.48)"}}>A visual workflow for how Bangzuu turns a brand into a creator-led story format with distribution built in.</p>
             </div>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14}}>
+            <div className="process-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14}}>
               {PROCESS.map(([num,title,copy,type])=>(
                 <div key={num} className="card" style={{padding:0,overflow:"hidden",height:"100%",display:"flex",flexDirection:"column"}}>
                   <div style={{position:"relative",aspectRatio:"1 / 1",overflow:"hidden",borderBottom:"1px solid rgba(255,255,255,.07)",flexShrink:0}}><ProcessSVG type={type}/><div style={{position:"absolute",top:12,left:12,background:"rgba(0,0,0,.62)",border:"1px solid rgba(0,0,0,.18)",borderRadius:50,padding:"3px 11px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".2em",color:"var(--amber)",backdropFilter:"blur(8px)"}}>{num}</div></div>
-                  <div style={{padding:20,flex:1}}><h3 className="ttl" style={{fontSize:20,color:"#fff4df",marginBottom:7}}>{title}</h3><p style={{fontSize:12.5,lineHeight:1.68,color:"rgba(255,244,223,.44)"}}>{copy}</p></div>
+                  <div className="card-body" style={{padding:20,flex:1}}><h3 className="ttl" style={{fontSize:20,color:"#fff4df",marginBottom:7}}>{title}</h3><p style={{fontSize:12.5,lineHeight:1.68,color:"rgba(255,244,223,.44)"}}>{copy}</p></div>
                 </div>
               ))}
             </div>
@@ -888,12 +953,12 @@ function HomePage() {
         {/* WHO WE WORK WITH */}
         <HR/>
         <Rv id="who-we-work-with"><Lbl c="Audience pathways"/><BigT c="Who We Work With"/></Rv>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(270px,1fr))",gap:18,marginTop:36}}>
+        <div className="responsive-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(270px,1fr))",gap:18,marginTop:36}}>
           {AUDIENCE.map(({label,headline,copy,cta,V})=>(
             <Rv key={label}>
               <div className="card" style={{padding:0,overflow:"hidden",height:"100%",display:"flex",flexDirection:"column"}}>
                 <V/>
-                <div style={{padding:24,display:"flex",flexDirection:"column",flex:1}}>
+                <div className="card-body" style={{padding:24,display:"flex",flexDirection:"column",flex:1}}>
                   <h3 className="ttl" style={{fontSize:24,color:"#fff4df",marginBottom:12}}>{headline}</h3>
                   <p style={{fontSize:13.5,lineHeight:1.8,color:"rgba(255,244,223,.52)",marginBottom:16}}>{copy}</p>
                   <a href="#register" className="clink" style={{marginTop:"auto"}}>{cta} →</a>
@@ -906,17 +971,17 @@ function HomePage() {
         {/* WHY */}
         <HR/>
         <Rv>
-          <div style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
+          <div className="panel" style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
             <div style={{marginBottom:32}}><Lbl c="Why Bangzuu"/><BigT c="Why Bangzuu"/></div>
             {/* Row 1: cards left, WhySVG right */}
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:20,alignItems:"stretch"}}>
+            <div className="split-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:20,alignItems:"stretch"}}>
               <div style={{display:"grid",gap:14}}>
                 {WHY.slice(0,2).map(([b,c])=>(<div key={b} className="card" style={{background:"rgba(0,0,0,.28)"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.82,color:"rgba(255,244,223,.52)"}}>{c}</p></div>))}
               </div>
               <WhySVG/>
             </div>
             {/* Row 2: network left, cards right */}
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,alignItems:"stretch"}}>
+            <div className="split-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,alignItems:"stretch"}}>
               <CreatorNetworkSVG/>
               <div style={{display:"grid",gap:14}}>
                 {WHY.slice(2).map(([b,c])=>(<div key={b} className="card" style={{background:"rgba(0,0,0,.28)"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.82,color:"rgba(255,244,223,.52)"}}>{c}</p></div>))}
@@ -928,12 +993,12 @@ function HomePage() {
         {/* FORMATS */}
         <HR/>
         <Rv><Lbl c="Formats"/><BigT c="What We Build"/></Rv>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:18,marginTop:36}}>
+        <div className="responsive-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:18,marginTop:36}}>
           {FORMATS.map(([title,copy,detail,type])=>(
             <Rv key={title}>
               <div className="card" style={{padding:0,overflow:"hidden",height:"100%",display:"flex",flexDirection:"column"}}>
                 <div style={{aspectRatio:"4 / 3",borderBottom:"1px solid rgba(255,255,255,.07)",overflow:"hidden",flexShrink:0,background:"#060505"}}><ProcessSVG type={type}/></div>
-                <div style={{padding:24,flex:1,display:"flex",flexDirection:"column",justifyContent:"flex-start",minHeight:210}}><h3 className="ttl" style={{fontSize:24,color:"#fff4df",marginBottom:10}}>{title}</h3><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.52)",marginBottom:9}}>{copy}</p><p style={{fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".18em",textTransform:"uppercase",color:"var(--amber)"}}>{detail}</p></div>
+                <div className="card-body format-card-body" style={{padding:24,flex:1,display:"flex",flexDirection:"column",justifyContent:"flex-start",minHeight:210}}><h3 className="ttl" style={{fontSize:24,color:"#fff4df",marginBottom:10}}>{title}</h3><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.52)",marginBottom:9}}>{copy}</p><p style={{fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".18em",textTransform:"uppercase",color:"var(--amber)"}}>{detail}</p></div>
               </div>
             </Rv>
           ))}
@@ -943,7 +1008,7 @@ function HomePage() {
         <HR/>
         <Rv><Lbl c="Market proof"/><BigT c="The Market Is Moving"/></Rv>
         <div style={{display:"grid",gap:18,marginTop:36}}>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14}}>
+          <div className="stats-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14}}>
             {STATS.map(({value,prefix,suffix,decimals,label})=>(
               <Rv key={label}>
                 <div className="card" style={{height:"100%",minHeight:168,display:"flex",flexDirection:"column",justifyContent:"center"}}>
@@ -963,7 +1028,7 @@ function HomePage() {
         {/* REGISTER */}
         <HR/>
         <Rv id="register">
-          <div style={{border:"1px solid rgba(255,255,255,.2)",borderRadius:26,background:"rgba(255,255,255,.12)",padding:56,textAlign:"center",boxShadow:"0 0 72px rgba(255,244,223,.07),0 28px 110px rgba(0,0,0,.26)",position:"relative",overflow:"hidden"}}>
+          <div className="cta-panel" style={{border:"1px solid rgba(255,255,255,.2)",borderRadius:26,background:"rgba(255,255,255,.12)",padding:56,textAlign:"center",boxShadow:"0 0 72px rgba(255,244,223,.07),0 28px 110px rgba(0,0,0,.26)",position:"relative",overflow:"hidden"}}>
             <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 50% 30%,rgba(255,244,223,.09),transparent 50%)",pointerEvents:"none"}}/>
             <div style={{position:"relative",zIndex:1}}>
               <Lbl c="Register interest"/>
@@ -1018,9 +1083,9 @@ function TravelPage() {
         <div style={{position:"absolute",left:"6%",top:"16%",width:300,height:300,borderRadius:"50%",background:"rgba(52,211,153,.12)",filter:"blur(78px)",animation:"drift1 14s ease-in-out infinite",pointerEvents:"none"}}/>
         <div style={{position:"absolute",right:"8%",bottom:"16%",width:260,height:260,borderRadius:"50%",background:"rgba(249,115,22,.16)",filter:"blur(72px)",animation:"drift2 15s ease-in-out infinite",pointerEvents:"none"}}/>
         <div style={{position:"absolute",bottom:0,left:0,right:0,height:110,background:"linear-gradient(to bottom,transparent,var(--bg))",pointerEvents:"none",zIndex:2}}/>
-        <div style={{position:"relative",zIndex:5,maxWidth:1280,margin:"0 auto",padding:"110px 24px 72px",width:"100%",display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"center"}}>
+        <div className="industry-hero-inner split-grid" style={{position:"relative",zIndex:5,maxWidth:1280,margin:"0 auto",padding:"110px 24px 72px",width:"100%",display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"center"}}>
           <div>
-            <div style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"6px 14px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(253,186,116,.72)",background:"rgba(0,0,0,.38)",backdropFilter:"blur(10px)",marginBottom:22}}><span style={{color:"var(--amber)",fontSize:7}}>▶</span> Bangzuu Studios × Travel Industry</div>
+            <div className="industry-hero-kicker" style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"6px 14px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(253,186,116,.72)",background:"rgba(0,0,0,.38)",backdropFilter:"blur(10px)",marginBottom:22}}><span style={{color:"var(--amber)",fontSize:7}}>▶</span> Bangzuu Studios × Travel Industry</div>
             <h1 className="ttl" style={{fontSize:"clamp(32px,5vw,66px)",color:"#fff4df",marginBottom:20}}>Stop Buying Sponsor Reads. Start Owning the Story.</h1>
             <p style={{fontSize:16,fontWeight:700,lineHeight:1.82,color:"rgba(253,186,116,.86)",marginBottom:20}}>We build vertical content series and creator-led mini-movies that embed your brand directly into the plot — using AI-assisted production and real influencer partnerships.</p>
             {["Your product becomes the engine of the story — not a 30-second interruption before it starts","Cinematic short-form content built natively for the platforms your audience lives on","Real creators. Existing audiences. Distribution that's built in — not bolted on","Faster production than traditional branded content. Higher recall than anything your media buyer has run this year"].map(b=><div key={b} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:13,padding:"11px 16px",fontSize:13.5,lineHeight:1.72,color:"rgba(255,244,223,.6)",marginBottom:9}}>{b}</div>)}
@@ -1031,10 +1096,10 @@ function TravelPage() {
         </div>
       </div>
 
-      <div style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
+      <div className="page-shell" style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
         <HR/>
         <Rv>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"start"}}>
+          <div className="split-grid-start" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"start"}}>
             <BigT c="Audiences have learned to skip your brand before you've finished saying it." sz={50}/>
             <div>
               <p style={{fontSize:15,lineHeight:1.88,color:"rgba(255,244,223,.6)",marginBottom:18}}>Mid-roll reads get muted. Sponsored segments get scrolled past. The creator delivers the line, the audience checks out, and you've paid for an impression that landed nowhere.</p>
@@ -1047,7 +1112,7 @@ function TravelPage() {
         <Rv>
           <Lbl c="Imagine this"/>
           <BigT c="Your brand inside the story."/>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14,marginTop:28}}>
+          <div className="three-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14,marginTop:28}}>
             {[
               ["VPN Brand","Your VPN brand as the only thing standing between the protagonist and a government surveillance dragnet — cutting across three countries, two border crossings, and one very bad decision. Your product isn't mentioned in a mid-roll. It's the reason the main character survives."],
               ["Travel Insurance","Your travel insurance brand as the emotional turning point of a 7-minute mini-movie — a trip that goes catastrophically wrong, a traveller completely alone, and the moment your brand turns disaster into survival."],
@@ -1059,13 +1124,13 @@ function TravelPage() {
         <HR/>
         <Rv>
           <Lbl c="What We Do"/><BigT c="What We Do"/>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:22,marginTop:28}}>
+          <div className="offer-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:22,marginTop:28}}>
             {TRAVEL_OFFERS.map((o,i)=><div key={o.title} className="card" style={{padding:0,overflow:"hidden"}}>
               <div style={{position:"relative",aspectRatio:"16 / 9",overflow:"hidden",background:"#060505",borderBottom:"1px solid rgba(255,255,255,.07)",flexShrink:0}}>
                 {i===0 ? (
-                  <div style={{position:"relative",width:"100%",height:"100%",background:"linear-gradient(135deg,#10211b,#060505)",display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:14,overflow:"hidden"}}>
+                  <div className="mobile-episode-art" style={{position:"relative",width:"100%",height:"100%",background:"linear-gradient(135deg,#10211b,#060505)",display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:14,overflow:"hidden"}}>
                     <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 20% 22%,rgba(249,115,22,.18),transparent 34%),radial-gradient(circle at 82% 72%,rgba(52,211,153,.14),transparent 36%)",pointerEvents:"none"}}/>
-                    {EPISODE_VISUALS.map(({ep,label,image})=><div key={ep} style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:14,background:"#060505",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:14,overflow:"hidden"}}>
+                    {EPISODE_VISUALS.map(({ep,label,image})=><div key={ep} className="mobile-episode-card" style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:14,background:"#060505",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:14,overflow:"hidden"}}>
                       <img src={image} alt="" aria-hidden="true" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:.84,filter:"saturate(.95) contrast(1.08)"}}/>
                       <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,rgba(0,0,0,.08),rgba(0,0,0,.76)),radial-gradient(circle at 50% 30%,rgba(253,186,116,.12),transparent 36%)"}}/>
                       <div style={{position:"absolute",top:12,right:12,width:28,height:28,borderRadius:"50%",border:"1px solid rgba(253,186,116,.28)",background:"rgba(0,0,0,.32)",display:"flex",alignItems:"center",justifyContent:"center",color:"var(--amber)",fontSize:10}}>▶</div>
@@ -1073,28 +1138,28 @@ function TravelPage() {
                     </div>)}
                   </div>
                 ) : (
-                  <div style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"linear-gradient(135deg,#1d1008,#050505)",padding:18,display:"grid",gridTemplateColumns:"1.1fr .9fr",gap:14}}>
+                  <div className="mobile-upload-art" style={{position:"relative",width:"100%",height:"100%",overflow:"hidden",background:"linear-gradient(135deg,#1d1008,#050505)",padding:18,display:"grid",gridTemplateColumns:"1.1fr .9fr",gap:14}}>
                     <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 22% 24%,rgba(249,115,22,.2),transparent 34%),radial-gradient(circle at 78% 72%,rgba(124,58,237,.14),transparent 36%)",pointerEvents:"none"}}/>
                     <div style={{position:"relative",zIndex:2,border:"1px solid rgba(255,255,255,.08)",borderRadius:16,background:"rgba(0,0,0,.34)",display:"flex",flexDirection:"column",justifyContent:"flex-end",padding:16,overflow:"hidden"}}>
                       <img src={creatorUploadVisual} alt="" aria-hidden="true" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:.82,filter:"saturate(.95) contrast(1.08)"}}/>
                       <div style={{position:"absolute",inset:0,background:"linear-gradient(160deg,rgba(0,0,0,.05),rgba(0,0,0,.74)),radial-gradient(circle at 50% 32%,rgba(253,186,116,.14),transparent 34%)"}}/>
                       <div style={{position:"relative",zIndex:2}}><p style={{fontFamily:"var(--mn)",fontSize:8,letterSpacing:".18em",color:"var(--amber)",marginBottom:5}}>HERO FILM</p><p style={{fontWeight:700,fontSize:14,color:"rgba(255,244,223,.84)"}}>Creator Upload</p></div>
                     </div>
-                    <div style={{position:"relative",zIndex:2,display:"grid",gap:10}}>
+                    <div className="mobile-upload-meta" style={{position:"relative",zIndex:2,display:"grid",gap:10}}>
                       {["3–10 MIN FILM","REAL CREATOR","BRAND USAGE"].map(label=><div key={label} style={{border:"1px solid rgba(253,186,116,.18)",borderRadius:14,padding:"13px 12px",background:"rgba(0,0,0,.38)",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".18em",textTransform:"uppercase",color:"rgba(253,186,116,.74)",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center"}}>{label}</div>)}
                     </div>
                   </div>
                 )}
               </div>
-              <div style={{padding:24}}><div style={{width:38,height:38,borderRadius:"50%",border:"1px solid rgba(253,186,116,.2)",background:"rgba(249,115,22,.1)",display:"flex",alignItems:"center",justifyContent:"center",color:"rgba(253,186,116,.78)",fontSize:17,marginBottom:18}}>◆</div><h3 className="ttl" style={{fontSize:22,color:"#fff4df",marginBottom:11}}>{o.title}</h3><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.52)",marginBottom:13}}>{o.copy}</p>{o.bullets.map(b=><p key={b} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:9,padding:"9px 13px",fontSize:12.5,lineHeight:1.58,color:"rgba(255,244,223,.48)",marginBottom:7}}>{b}</p>)}</div>
+              <div className="card-body" style={{padding:24}}><div style={{width:38,height:38,borderRadius:"50%",border:"1px solid rgba(253,186,116,.2)",background:"rgba(249,115,22,.1)",display:"flex",alignItems:"center",justifyContent:"center",color:"rgba(253,186,116,.78)",fontSize:17,marginBottom:18}}>◆</div><h3 className="ttl" style={{fontSize:22,color:"#fff4df",marginBottom:11}}>{o.title}</h3><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.52)",marginBottom:13}}>{o.copy}</p>{o.bullets.map(b=><p key={b} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:9,padding:"9px 13px",fontSize:12.5,lineHeight:1.58,color:"rgba(255,244,223,.48)",marginBottom:7}}>{b}</p>)}</div>
             </div>)}
           </div>
         </Rv>
 
         <HR/>
         <Rv>
-          <div style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
-            <div style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:36}}>
+          <div className="panel" style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
+            <div className="audience-grid" style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:36}}>
               <div><Lbl c="Audience"/><BigT c="Who Is This For"/></div>
               <div><div style={{display:"grid",gap:9,marginBottom:22}}>{TRAVEL_AUDIENCE.map(item=><div key={item} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:11,padding:"11px 16px",fontSize:13.5,lineHeight:1.68,color:"rgba(255,244,223,.6)"}}>{item}</div>)}</div><p style={{fontSize:14,fontStyle:"italic",lineHeight:1.82,color:"rgba(253,186,116,.72)"}}>If you're spending on creator content and not getting the results the brief promised — this is for you.</p></div>
             </div>
@@ -1104,7 +1169,7 @@ function TravelPage() {
         <HR/>
         <Rv>
           <Lbl c="Why Bangzuu"/><BigT c="Why Bangzuu"/>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:14,marginTop:28}}>{TRAVEL_WHY.map(([b,c])=><div key={b} className="card" style={{background:"rgba(0,0,0,.28)",minHeight:180,display:"flex",flexDirection:"column",justifyContent:"center"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.5)"}}>{c}</p></div>)}</div>
+          <div className="why-grid" style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:14,marginTop:28}}>{TRAVEL_WHY.map(([b,c])=><div key={b} className="card" style={{background:"rgba(0,0,0,.28)",minHeight:180,display:"flex",flexDirection:"column",justifyContent:"center"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.5)"}}>{c}</p></div>)}</div>
         </Rv>
 
         <HR/>
@@ -1112,7 +1177,7 @@ function TravelPage() {
 
         <HR/>
         <Rv>
-          <div id="travel-register" style={{border:"1px solid rgba(255,255,255,.16)",borderRadius:26,background:"rgba(255,255,255,.07)",padding:52,textAlign:"center",position:"relative",overflow:"hidden"}}>
+          <div id="travel-register" className="cta-panel" style={{border:"1px solid rgba(255,255,255,.16)",borderRadius:26,background:"rgba(255,255,255,.07)",padding:52,textAlign:"center",position:"relative",overflow:"hidden"}}>
             <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 50% 30%,rgba(255,244,223,.06),transparent 50%)",pointerEvents:"none"}}/>
             <div style={{position:"relative",zIndex:1}}><Lbl c="Register interest"/><BigT c="Ready to Make Content People Actually Watch?" sz={48}/><p style={{maxWidth:560,margin:"18px auto 0",fontSize:15,lineHeight:1.88,color:"rgba(255,244,223,.58)"}}>Stop renting attention. Start owning the story. Register your interest and we'll be in touch within 48 hours.</p><RegForm/><p style={{marginTop:14,fontFamily:"var(--mn)",fontSize:9.5,letterSpacing:".18em",textTransform:"uppercase",color:"rgba(255,255,255,.42)"}}>We review every submission. Limited spots available per quarter.</p></div>
           </div>
@@ -1139,14 +1204,14 @@ function EntertainmentPage() {
         <div style={{position:"absolute",left:"5%",top:"18%",width:280,height:280,borderRadius:"50%",background:"rgba(249,115,22,.2)",filter:"blur(75px)",animation:"drift1 13s ease-in-out infinite",pointerEvents:"none"}}/>
         <div style={{position:"absolute",right:"8%",bottom:"14%",width:240,height:240,borderRadius:"50%",background:"rgba(124,58,237,.18)",filter:"blur(65px)",animation:"drift2 15s ease-in-out infinite",pointerEvents:"none"}}/>
         <div style={{position:"absolute",bottom:0,left:0,right:0,height:110,background:"linear-gradient(to bottom,transparent,var(--bg))",pointerEvents:"none",zIndex:2}}/>
-        <div style={{position:"relative",zIndex:5,maxWidth:1280,margin:"0 auto",padding:"110px 24px 72px",width:"100%",display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"center"}}>
+        <div className="industry-hero-inner split-grid" style={{position:"relative",zIndex:5,maxWidth:1280,margin:"0 auto",padding:"110px 24px 72px",width:"100%",display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"center"}}>
           <div>
-            <div style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"6px 14px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(253,186,116,.72)",background:"rgba(0,0,0,.38)",backdropFilter:"blur(10px)",marginBottom:22}}>
+            <div className="industry-hero-kicker" style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"6px 14px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(253,186,116,.72)",background:"rgba(0,0,0,.38)",backdropFilter:"blur(10px)",marginBottom:22}}>
               <span style={{color:"var(--amber)",fontSize:7}}>▶</span> Bangzuu Studios × Entertainment & Media
             </div>
             <h1 className="ttl" style={{fontSize:"clamp(32px,5vw,66px)",color:"#fff4df",marginBottom:20}}>The Micro-Drama Market Is Exploding. The Content Supply Isn't Keeping Up.</h1>
             <p style={{fontSize:16,fontWeight:700,lineHeight:1.82,color:"rgba(253,186,116,.86)",marginBottom:20}}>Bangzuu Studios is an AI-native production studio creating vertical content series and micro-dramas for platforms, co-production partners, and international sales pipelines — faster, leaner, and more cinematic than traditional production.</p>
-            <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:20}}>
+            <div className="industry-stat-row" style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:20}}>
               <StatPill num="$14B" label="Market 2026" delay={.2}/>
               <StatPill num="58" label="Active platforms" delay={.35}/>
               <StatPill num="400%" label="YoY growth" delay={.5}/>
@@ -1159,10 +1224,10 @@ function EntertainmentPage() {
         </div>
       </div>
 
-      <div style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
+      <div className="page-shell" style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
         <HR/>
         <Rv>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"start"}}>
+          <div className="split-grid-start" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"start"}}>
             <BigT c="The formats growing fastest are the hardest to staff and supply." sz={50}/>
             <div>
               <p style={{fontSize:15,lineHeight:1.88,color:"rgba(255,244,223,.6)",marginBottom:18}}>Micro-drama platforms are scaling at 100–400% annually. The appetite for content is outpacing the pipeline that feeds it. Traditional production is too slow, too expensive, and too format-agnostic to keep up.</p>
@@ -1174,7 +1239,7 @@ function EntertainmentPage() {
         <HR/>
         <Rv>
           <Lbl c="Offerings"/><BigT c="What We Do"/>
-          <div style={{display:"grid",gridTemplateColumns:"1.15fr 1fr",gap:24,marginTop:28,alignItems:"start"}}>
+          <div className="sticky-split" style={{display:"grid",gridTemplateColumns:"1.15fr 1fr",gap:24,marginTop:28,alignItems:"start"}}>
             <div style={{display:"grid",gap:18}}>
               {ENT_OFFERS.map(o=>(
                 <div key={o.title} className="card">
@@ -1185,14 +1250,14 @@ function EntertainmentPage() {
                 </div>
               ))}
             </div>
-            <div style={{position:"sticky",top:90}}><GenreGridSVG/></div>
+            <div className="sticky-visual" style={{position:"sticky",top:90}}><GenreGridSVG/></div>
           </div>
         </Rv>
 
         <HR/>
         <Rv>
-          <div style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
-            <div style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:36}}>
+          <div className="panel" style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
+            <div className="audience-grid" style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:36}}>
               <div><Lbl c="Audience"/><BigT c="Who Is This For"/></div>
               <div>
                 <div style={{display:"grid",gap:9,marginBottom:22}}>{ENT_AUDIENCE.map(item=>(<div key={item} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:11,padding:"11px 16px",fontSize:13.5,lineHeight:1.68,color:"rgba(255,244,223,.6)"}}>{item}</div>))}</div>
@@ -1206,7 +1271,7 @@ function EntertainmentPage() {
         <Rv>
           <Lbl c="Why Bangzuu"/>
           <BigT c="Why Bangzuu"/>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:14,marginTop:28}}>
+          <div className="why-grid" style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:14,marginTop:28}}>
             {ENT_WHY.map(([b,c])=>(
               <div key={b} className="card" style={{background:"rgba(0,0,0,.28)",minHeight:210,display:"flex",flexDirection:"column",justifyContent:"center"}}>
                 <p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p>
@@ -1221,7 +1286,7 @@ function EntertainmentPage() {
           <Lbl c="Market data"/>
           <BigT c="The Market You're Already In"/>
           <div style={{display:"grid",gap:18,marginTop:28}}>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",gap:14}}>
+            <div className="market-four-grid" style={{display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",gap:14}}>
               {ENT_MARKET.map(([num,lbl])=>(
                 <div key={num} className="card" style={{height:"100%",minHeight:148,display:"flex",flexDirection:"column",justifyContent:"center"}}>
                   <div className="ttl" style={{fontSize:34,color:"#fff4df",marginBottom:10}}>{num}</div>
@@ -1240,7 +1305,7 @@ function EntertainmentPage() {
 
         <HR/>
         <Rv>
-          <div id="ent-register" style={{border:"1px solid rgba(255,255,255,.16)",borderRadius:26,background:"rgba(255,255,255,.07)",padding:52,textAlign:"center",position:"relative",overflow:"hidden"}}>
+          <div id="ent-register" className="cta-panel" style={{border:"1px solid rgba(255,255,255,.16)",borderRadius:26,background:"rgba(255,255,255,.07)",padding:52,textAlign:"center",position:"relative",overflow:"hidden"}}>
             <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 50% 30%,rgba(255,244,223,.06),transparent 50%)",pointerEvents:"none"}}/>
             <div style={{position:"relative",zIndex:1}}>
               <Lbl c="Selective partnerships only"/><BigT c="Let's Talk About What You're Building." sz={48}/>
@@ -1271,14 +1336,14 @@ function FitnessPage() {
         <div style={{position:"absolute",left:"7%",top:"14%",width:300,height:300,borderRadius:"50%",background:"rgba(249,115,22,.24)",filter:"blur(85px)",animation:"drift1 14s ease-in-out infinite",pointerEvents:"none"}}/>
         <div style={{position:"absolute",right:"9%",bottom:"18%",width:220,height:220,borderRadius:"50%",background:"rgba(52,211,153,.09)",filter:"blur(65px)",animation:"drift3 17s ease-in-out infinite",pointerEvents:"none"}}/>
         <div style={{position:"absolute",bottom:0,left:0,right:0,height:110,background:"linear-gradient(to bottom,transparent,var(--bg))",pointerEvents:"none",zIndex:2}}/>
-        <div style={{position:"relative",zIndex:5,maxWidth:1280,margin:"0 auto",padding:"110px 24px 72px",width:"100%",display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"center"}}>
+        <div className="industry-hero-inner split-grid" style={{position:"relative",zIndex:5,maxWidth:1280,margin:"0 auto",padding:"110px 24px 72px",width:"100%",display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"center"}}>
           <div>
-            <div style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"6px 14px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(253,186,116,.72)",background:"rgba(0,0,0,.38)",backdropFilter:"blur(10px)",marginBottom:22}}>
+            <div className="industry-hero-kicker" style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid rgba(253,186,116,.2)",borderRadius:50,padding:"6px 14px",fontFamily:"var(--mn)",fontSize:8.5,letterSpacing:".26em",textTransform:"uppercase",color:"rgba(253,186,116,.72)",background:"rgba(0,0,0,.38)",backdropFilter:"blur(10px)",marginBottom:22}}>
               <span style={{color:"var(--amber)",fontSize:7}}>▶</span> Bangzuu Studios × Fitness, Lifestyle & DTC
             </div>
             <h1 className="ttl" style={{fontSize:"clamp(32px,5vw,66px)",color:"#fff4df",marginBottom:20}}>Stop Sponsoring Fitness Content. Start Being the Reason People Watch It.</h1>
             <p style={{fontSize:16,fontWeight:700,lineHeight:1.82,color:"rgba(253,186,116,.86)",marginBottom:20}}>Bangzuu Studios builds vertical content series and creator-led mini-movies for fitness, lifestyle, and DTC brands — where your supplement fuels the comeback, your apparel defines the character, and your product isn't a mid-roll. It's the whole point.</p>
-            <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:20}}>
+            <div className="industry-stat-row" style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:20}}>
               <StatPill num="4–8wk" label="Delivery time" delay={.2}/>
               <StatPill num="2.1M" label="Avg creator reach" delay={.35}/>
               <StatPill num="4.2×" label="Brand recall" delay={.5}/>
@@ -1291,10 +1356,10 @@ function FitnessPage() {
         </div>
       </div>
 
-      <div style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
+      <div className="page-shell" style={{maxWidth:1280,margin:"0 auto",padding:"0 24px"}}>
         <HR/>
         <Rv>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"start"}}>
+          <div className="split-grid-start" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:52,alignItems:"start"}}>
             <BigT c="Performance creative has a ceiling. Most fitness brands hit it faster than they expect." sz={50}/>
             <div>
               <p style={{fontSize:15,lineHeight:1.88,color:"rgba(255,244,223,.6)",marginBottom:18}}>UGC ads start strong and burn out. Influencer reads blend into the feed. The audience has seen the before-and-after. They've heard the discount code. They know what's coming before the creator opens their mouth.</p>
@@ -1307,7 +1372,7 @@ function FitnessPage() {
         <Rv>
           <Lbl c="Offerings"/><BigT c="What We Do"/>
           <div style={{marginTop:24,marginBottom:24}}><AthleteJourneySVG/></div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:22,alignItems:"start"}}>
+          <div className="sticky-split" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:22,alignItems:"start"}}>
             <div style={{display:"grid",gap:18}}>
               {FIT_OFFERS.map(o=>(
                 <div key={o.title} className="card">
@@ -1318,14 +1383,14 @@ function FitnessPage() {
                 </div>
               ))}
             </div>
-            <div style={{position:"sticky",top:90}}><FitnessOfferSVG/></div>
+            <div className="sticky-visual" style={{position:"sticky",top:90}}><FitnessOfferSVG/></div>
           </div>
         </Rv>
 
         <HR/>
         <Rv>
-          <div style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
-            <div style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:36}}>
+          <div className="panel" style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:26,background:"rgba(255,255,255,.02)",padding:36}}>
+            <div className="audience-grid" style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:36}}>
               <div><Lbl c="Audience"/><BigT c="Who Is This For"/></div>
               <div>
                 <div style={{display:"grid",gap:9,marginBottom:22}}>{FIT_AUDIENCE.map(item=>(<div key={item} style={{border:"1px solid rgba(255,255,255,.07)",borderRadius:11,padding:"11px 16px",fontSize:13.5,lineHeight:1.68,color:"rgba(255,244,223,.6)"}}>{item}</div>))}</div>
@@ -1338,7 +1403,7 @@ function FitnessPage() {
         <HR/>
         <Rv>
           <Lbl c="Why Bangzuu"/><BigT c="Why Bangzuu"/>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:18,marginTop:28,alignItems:"stretch"}}>
+          <div className="why-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:18,marginTop:28,alignItems:"stretch"}}>
             <div style={{display:"grid",gap:14}}>{FIT_WHY.slice(0,2).map(([b,c])=>(<div key={b} className="card" style={{background:"rgba(0,0,0,.28)"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.5)"}}>{c}</p></div>))}</div>
             <div style={{display:"grid",gap:14}}>{FIT_WHY.slice(2).map(([b,c])=>(<div key={b} className="card" style={{background:"rgba(0,0,0,.28)"}}><p style={{fontWeight:700,fontSize:15,lineHeight:1.58,color:"#fff4df",marginBottom:9}}>{b}</p><p style={{fontSize:13.5,lineHeight:1.78,color:"rgba(255,244,223,.5)"}}>{c}</p></div>))}</div>
           </div>
@@ -1350,7 +1415,7 @@ function FitnessPage() {
 
         <HR/>
         <Rv>
-          <div id="fit-register" style={{border:"1px solid rgba(255,255,255,.16)",borderRadius:26,background:"rgba(255,255,255,.07)",padding:52,textAlign:"center",position:"relative",overflow:"hidden"}}>
+          <div id="fit-register" className="cta-panel" style={{border:"1px solid rgba(255,255,255,.16)",borderRadius:26,background:"rgba(255,255,255,.07)",padding:52,textAlign:"center",position:"relative",overflow:"hidden"}}>
             <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 50% 30%,rgba(255,244,223,.06),transparent 50%)",pointerEvents:"none"}}/>
             <div style={{position:"relative",zIndex:1}}>
               <Lbl c="Limited spots available per quarter"/><BigT c="Ready to Build Content Your Audience Actually Wants to Watch?" sz={46}/>
